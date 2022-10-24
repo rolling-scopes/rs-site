@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { usePreviewSubscription } from '../lib/sanity';
 import { getClient, overlayDrafts } from '../lib/sanity.server';
 import { socialNetworksListQuery } from '../lib/queries/social-network';
