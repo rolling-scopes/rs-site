@@ -1,7 +1,8 @@
-import { usePreviewSubscription } from '../lib/sanity';
-import { getClient, overlayDrafts } from '../lib/sanity.server';
-import { socialNetworksListQuery } from '../lib/queries/social-network';
-import SocialNetworking from '../components/SocialNetworking';
+import { usePreviewSubscription } from '@/lib/sanity';
+import { getClient, overlayDrafts } from '@/lib/sanity.server';
+import { socialNetworksListQuery } from '@/lib/queries/social-network';
+import SocialNetworking from '@/components/SocialNetworking';
+import DonationV2 from '@/components/DonationV2';
 import { SocialNetworkingListT } from '../types';
 
 export default function Index({
@@ -19,6 +20,7 @@ export default function Index({
   return (
     <>
       <SocialNetworking socialList={allSocialList} />
+      <DonationV2 />
     </>
   );
 }
