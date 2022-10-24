@@ -8,14 +8,14 @@ export default function DonationV2() {
         </h1>
 
         <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
-        <picture className="w-full lg:mx-6 lg:w-1/2 h-72 lg:h-96">
-          <source srcSet={imageUrl} type="image/webp" />
-          <img
-            className="object-cover w-full h-72 lg:h-96"
-            src={imageUrl}
-            alt=""
-          />
-        </picture>
+          <picture className="w-full lg:mx-6 lg:w-1/2 h-72 lg:h-96">
+            <source srcSet={imageUrl} type="image/webp" />
+            <img
+              className="object-cover w-full h-72 lg:h-96"
+              src={imageUrl}
+              alt=""
+            />
+          </picture>
 
           <div className="mt-6 lg:w-1/2 lg:mt-auto">
             <p className="mt-3 text-sm text-[#1A1A1A] md:text-sm">
