@@ -1,0 +1,85 @@
+.block {
+  @apply p-20 flex flex-col gap-8 justify-start w-full;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 36px;
+  @apply text-title-color-1;
+}
+
+.socialList {
+  @apply w-full flex flex-row justify-center items-center gap-12 list-none;
+}
+
+.socialItem {
+  @apply flex flex-col justify-start items-center gap-2;
+}
+
+.socialBtn {
+  @apply w-28 h-28 flex justify-center align-middle rounded-full;
+  background-color: #f2f3f7;
+}
+
+.socialName {
+}
+
+.modalSection {
+  @apply hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full;
+}
+
+.openModal {
+  @apply flex items-center justify-center backdrop-blur-sm;
+  background: rgba(44, 47, 60, 0.2);
+}
+
+.modalField {
+  @apply relative p-20 flex flex-col items-center justify-start gap-8;
+  height: 588px;
+  width: 796px;
+
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.modalIconBlock {
+  @apply flex flex-col items-center justify-start gap-6;
+}
+
+.icon {
+  @apply flex justify-center align-middle rounded-full;
+  width: 188px;
+  height: 188px;
+  background-color: #f2f3f7;
+}
+
+.iconText {
+  @apply font-bold text-title-color-1 capitalize;
+  font-size: 32px;
+  line-height: 36px;
+}
+
+.modalContentSection {
+  @apply flex justify-center items-start gap-8;
+}
+
+.modalContentItem {
+  @apply flex justify-start items-center flex-col flex-1;
+}
+
+.modalContentTitle {
+  @apply mb-1 text-2xl font-semibold underline text-center;
+}
+
+.modalSubscribers {
+  @apply mb-4 text-xl font-semibold text-center;
+}
+
+.modalContentText {
+  @apply text-xl font-semibold text-center;
+}
+
+.btnClose {
+  @apply absolute top-6 right-6;
+}
