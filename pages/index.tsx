@@ -6,7 +6,13 @@ import DonationV2 from '@/components/DonationV2';
 import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
-import { CommunityT, DonationV1T, DonationV2T, SocialNetworkingListT, SpeakersT } from '../types';
+import {
+  CommunityT,
+  DonationV1T,
+  DonationV2T,
+  SocialNetworkingListT,
+  SpeakersT
+} from '../types';
 
 export default function Index({
   socialNetworksList: initialSocialNetworksList,
@@ -16,18 +22,27 @@ export default function Index({
   community: initialCommunity,
   preview
 }) {
-  const { data: allDonationV1 } = usePreviewSubscription<DonationV1T[]>(queries.donationV1, {
-    initialData: initialDonationV1,
-    enabled: preview
-  });
-  const { data: allDonationV2 } = usePreviewSubscription<DonationV2T[]>(queries.donationV1, {
-    initialData: initialDonationV2,
-    enabled: preview
-  });
-  const { data: allCommunity } = usePreviewSubscription<CommunityT[]>(queries.donationV1, {
-    initialData: initialCommunity,
-    enabled: preview
-  });
+  const { data: allDonationV1 } = usePreviewSubscription<DonationV1T[]>(
+    queries.donationV1,
+    {
+      initialData: initialDonationV1,
+      enabled: preview
+    }
+  );
+  const { data: allDonationV2 } = usePreviewSubscription<DonationV2T[]>(
+    queries.donationV1,
+    {
+      initialData: initialDonationV2,
+      enabled: preview
+    }
+  );
+  const { data: allCommunity } = usePreviewSubscription<CommunityT[]>(
+    queries.donationV1,
+    {
+      initialData: initialCommunity,
+      enabled: preview
+    }
+  );
   const { data: allSocialList } = usePreviewSubscription<SocialNetworkingListT>(
     queries.socialNetworksList,
     {
@@ -72,7 +87,14 @@ export async function getStaticProps({ preview = false }) {
   );
 
   return {
-    props: { socialNetworksList, donationV1, donationV2, speakers, community, preview },
+    props: {
+      socialNetworksList,
+      donationV1,
+      donationV2,
+      speakers,
+      community,
+      preview
+    },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
   };

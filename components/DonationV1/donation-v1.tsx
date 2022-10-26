@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 type Props = {
   donation: DonationV1T;
-}
+};
 
 export default function DonationV1({ donation }: Props) {
   return (

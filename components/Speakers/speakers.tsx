@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 type Props = {
   speaker: SpeakersT;
-}
+};
 
 export default function Speakers({ speaker }: Props) {
   return (

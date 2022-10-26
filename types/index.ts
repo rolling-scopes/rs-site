@@ -1,4 +1,4 @@
-import { SanityImageObject } from "@sanity/image-url/lib/types/types";
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
 export type SocialNetworkingItemT = {
   _id: string;
@@ -14,12 +14,12 @@ export type SocialNetworkingItemT = {
 type Link = {
   titleLink: string;
   link: string;
-}
+};
 
 type Base = {
   title: string;
   description: string;
-}
+};
 
 export type SpeakersT = Base & Link;
 

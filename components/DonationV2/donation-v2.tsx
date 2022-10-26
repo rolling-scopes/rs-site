@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 type Props = {
   donation: DonationV2T;
-}
+};
 
 export default function DonationV2({ donation }: Props) {
   const imageUrl = donation.picture?.asset?._ref
