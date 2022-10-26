@@ -1,0 +1,21 @@
+.block {
+  @apply flex flex-col justify-center h-80 text-center px-8 dark:text-white;
+  background-color: #191b1d;
+}
+
+.container {
+  @apply flex flex-col justify-center items-center mx-auto md:max-w-[50%];
+}
+
+.title {
+  @apply text-slate-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white;
+}
+
+.description {
+  @apply mt-6 text-base;
+}
+
+.link {
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 bg-white mt-6 ml-8;
+  color: #191B1D;
+}

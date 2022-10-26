@@ -1,0 +1,35 @@
+.block {
+  @apply container px-6 py-10 mx-auto;
+}
+
+.content {
+  @apply mt-8 lg:-mx-6 lg:flex lg:items-center;
+}
+
+.right {
+  @apply mt-6 lg:w-1/2 lg:mt-auto;
+}
+
+.title {
+  @apply text-3xl font-bold;
+  color: #1A1A1A;
+}
+
+.description {
+  @apply mt-3 text-sm md:text-sm;
+  color: #1A1A1A;
+}
+
+.link {
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6;
+  background-color: #191B1D;
+}
+
+.image {
+  @apply w-full h-72 lg:h-96 lg:mx-6 lg:w-1/2;
+  position: relative;
+
+  & > span > img {
+    @apply object-cover;
+  }
+}

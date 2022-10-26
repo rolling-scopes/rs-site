@@ -1,3 +1,3 @@
-import DonationV2 from './donationV2';
+import DonationV2 from './donation-v2';
 
 export default DonationV2;
