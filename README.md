@@ -65,13 +65,13 @@ Then set these variables in `.env.local`:
 - `NEXT_PUBLIC_SANITY_PROJECT_ID` should be the `projectId` value from [`sanity.json`].
 - `NEXT_PUBLIC_SANITY_DATASET` should be the `dataset` value from [`sanity.json`].
 - `SANITY_API_READ_TOKEN` create an API token with `read-only` permissions:
-    - Run this to open your project settings or go to https://manage.sanity.io/ and open your project:
-      ```bash
-      (cd studio && npx @sanity/cli manage)
-      ```
-    - Go to **API** and the **Tokens** section at the bottom, launch its **Add API token** button.
-    - Name it `SANITY_API_READ_TOKEN`, set **Permissions** to `Viewer`.
-    - Hit **Save** and you can copy/paste the token.
+  - Run this to open your project settings or go to https://manage.sanity.io/ and open your project:
+    ```bash
+    (cd studio && npx @sanity/cli manage)
+    ```
+  - Go to **API** and the **Tokens** section at the bottom, launch its **Add API token** button.
+  - Name it `SANITY_API_READ_TOKEN`, set **Permissions** to `Viewer`.
+  - Hit **Save** and you can copy/paste the token.
 
 Your `.env.local` file should look like this:
 

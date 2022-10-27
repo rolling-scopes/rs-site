@@ -26,7 +26,7 @@ const getQueryForType = type => {
 };
 
 const log = (msg: string, error?: boolean) =>
-    console[error ? 'error' : 'log'](`[revalidate] ${msg}`);
+  console[error ? 'error' : 'log'](`[revalidate] ${msg}`);
 
 async function readBody(readable) {
   const chunks = [];
@@ -41,11 +41,11 @@ export default async function revalidate(req, res) {
   const signature = req.headers[SIGNATURE_HEADER_NAME];
   const body = await readBody(req); // Read the body into a string
   if (
-      !isValidSignature(
-          body,
-          signature,
-          process.env.SANITY_REVALIDATE_SECRET?.trim()
-      )
+    !isValidSignature(
+      body,
+      signature,
+      process.env.SANITY_REVALIDATE_SECRET?.trim()
+    )
   ) {
     const invalidSignature = 'Invalid signature';
     log(invalidSignature, true);
@@ -63,7 +63,7 @@ export default async function revalidate(req, res) {
   log(`Querying post slug for _id '${id}', type '${_type}' ..`);
   const slug = await sanityClient.fetch(getQueryForType(_type), { id });
   const slugs = (Array.isArray(slug) ? slug : [slug]).map(
-      _slug => `/posts/${_slug}`
+    _slug => `/posts/${_slug}`
   );
   const staleRoutes = ['/', ...slugs];
 
