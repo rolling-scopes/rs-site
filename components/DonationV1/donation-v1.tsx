@@ -13,7 +13,7 @@ export default function DonationV1({ donation }: Props) {
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
         <span className={styles.description}>{description}</span>
-        <Link href={link}>
+        <Link href={link ?? ''}>
           <a className={styles.link}>{titleLink}</a>
         </Link>
       </div>

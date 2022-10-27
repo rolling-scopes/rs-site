@@ -26,7 +26,7 @@ export default function DonationV2({ donation }: Props) {
           <div className={styles.right}>
             <p className={styles.description}>{description}</p>
 
-            <Link href={link}>
+            <Link href={link ?? ''}>
               <a className={styles.link}>{titleLink}</a>
             </Link>
           </div>
