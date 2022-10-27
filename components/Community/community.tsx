@@ -8,8 +8,9 @@ type Props = {
 };
 
 export default function Community({ community }: Props) {
-  const imageUrl = community.picture?.asset?._ref
-    ? urlForImage(community.picture).url()
+  const { picture, title, description } = community || {};
+  const imageUrl = picture?.asset?._ref
+    ? urlForImage(picture).url()
     : 'https://source.unsplash.com/630x441/';
   return (
     <section>
@@ -20,9 +21,9 @@ export default function Community({ community }: Props) {
           </div>
 
           <div className={styles.right}>
-            <h1 className={styles.title}>{community.title}</h1>
+            <h1 className={styles.title}>{title}</h1>
             <p
-              dangerouslySetInnerHTML={{ __html: community.description }}
+              dangerouslySetInnerHTML={{ __html: description }}
               className={styles.description}
             ></p>
           </div>

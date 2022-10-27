@@ -9,13 +9,14 @@ type Props = {
 };
 
 export default function DonationV2({ donation }: Props) {
-  const imageUrl = donation.picture?.asset?._ref
-    ? urlForImage(donation.picture).url()
+  const { picture, title, description, link, titleLink } = donation || {};
+  const imageUrl = picture?.asset?._ref
+    ? urlForImage(picture).url()
     : 'https://source.unsplash.com/630x441/';
   return (
     <section>
       <div className={styles.block}>
-        <h1 className={styles.title}>{donation.title}</h1>
+        <h1 className={styles.title}>{title}</h1>
 
         <div className={styles.content}>
           <div className={styles.image}>
@@ -23,10 +24,10 @@ export default function DonationV2({ donation }: Props) {
           </div>
 
           <div className={styles.right}>
-            <p className={styles.description}>{donation.description}</p>
+            <p className={styles.description}>{description}</p>
 
-            <Link href={donation.link}>
-              <a className={styles.link}>{donation.titleLink}</a>
+            <Link href={link}>
+              <a className={styles.link}>{titleLink}</a>
             </Link>
           </div>
         </div>
