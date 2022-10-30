@@ -1,0 +1,57 @@
+.accordionItem {
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  @apply transition-all;
+}
+
+.withPadding {
+  padding-bottom: 30px;
+}
+
+.accordionItemTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  position: relative;
+  cursor: pointer;
+  padding: 30px 0;
+}
+
+.accordionItemContent {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-right: 20px;
+  overflow-y: hidden;
+  height: 0;
+}
+
+.showContent {
+  height: auto;
+}
+
+.plus {
+  --b: 5px;
+  width: 20px;
+  aspect-ratio: 1;
+  display: inline-block;
+  border: none;
+  margin: 0px;
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #fff 90deg,
+      #000 0
+    )
+    calc(100% + var(--b) / 2) calc(100% + var(--b) / 2) / calc(50% + var(--b))
+    calc(50% + var(--b));
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rotatePlus {
+  transform: translateY(-50%) rotate(45deg);
+}

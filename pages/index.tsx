@@ -1,3 +1,4 @@
+import type { NextPage } from 'next';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
@@ -6,6 +7,12 @@ import DonationV2 from '@/components/DonationV2';
 import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
+import { FAQ } from '@/components/FAQ';
+import {
+  Accordion,
+  type AccordionItem,
+  getFAQMarkdowns
+} from '@/components/Accordion';
 import {
   CommunityT,
   DonationV1T,
@@ -14,14 +21,25 @@ import {
   SpeakersT
 } from '../types';
 
-export default function Index({
+type Props = {
+  socialNetworksList: any;
+  donationV1: any;
+  donationV2: any;
+  speakers: any;
+  community: any;
+  preview: any;
+  faqMarkdowns: AccordionItem[];
+};
+
+const Index: NextPage<Props> = ({
   socialNetworksList: initialSocialNetworksList,
   donationV1: initialDonationV1,
   donationV2: initialDonationV2,
   speakers: initialSpeakers,
   community: initialCommunity,
-  preview
-}) {
+  preview,
+  faqMarkdowns
+}) => {
   const { data: allDonationV1 } = usePreviewSubscription<DonationV1T[]>(
     queries.donationV1,
     {
@@ -65,9 +83,12 @@ export default function Index({
       <DonationV1 donation={allDonationV1[0]} />
       <Community community={allCommunity[0]} />
       <Speakers speaker={allSpeakers[0]} />
+      <FAQ link="/">
+        <Accordion posts={faqMarkdowns || []} length={5} />
+      </FAQ>
     </>
   );
-}
+};
 
 export async function getStaticProps({ preview = false }) {
   const socialNetworksList = overlayDrafts(
@@ -86,6 +107,8 @@ export async function getStaticProps({ preview = false }) {
     await getClient(preview).fetch(queries.community)
   );
 
+  const faqMarkdowns = await getFAQMarkdowns();
+
   return {
     props: {
       socialNetworksList,
@@ -93,9 +116,12 @@ export async function getStaticProps({ preview = false }) {
       donationV2,
       speakers,
       community,
-      preview
+      preview,
+      faqMarkdowns
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
   };
 }
+
+export default Index;
