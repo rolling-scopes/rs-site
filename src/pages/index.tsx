@@ -6,13 +6,8 @@ import DonationV2 from '@/components/DonationV2';
 import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
-import {
-  CommunityT,
-  DonationV1T,
-  DonationV2T,
-  SocialNetworkingListT,
-  SpeakersT
-} from '../types';
+import {CommunityT, DonationV1T, DonationV2T, SocialNetworkingListT, SpeakersT} from 'types';
+
 
 export default function Index({
   socialNetworksList: initialSocialNetworksList,
