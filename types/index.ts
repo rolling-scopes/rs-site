@@ -1,15 +1,6 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-export type SocialNetworkingItemT = {
-  _id: string;
-  social_item_link: Array<{
-    _id: string;
-    name: string;
-    link: string;
-    country: string;
-  }>;
-  social_name: string;
-};
+export * from './social-networking';
 
 type Link = {
   titleLink: string;
@@ -33,4 +24,3 @@ export interface CommunityT extends Base {
   picture: SanityImageObject;
 }
 
-export type SocialNetworkingListT = Array<SocialNetworkingItemT>;
