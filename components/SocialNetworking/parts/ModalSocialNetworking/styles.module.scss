@@ -1,9 +1,5 @@
 .modalSection {
-  @apply hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 md:h-full;
-}
-
-.openModal {
-  @apply flex items-center justify-center backdrop-blur-sm;
+  @apply flex items-center justify-center backdrop-blur-sm fixed top-0 right-0 left-0 z-50 w-full h-full md:inset-0 md:h-full;
   background: rgba(44, 47, 60, 0.2);
 }
 

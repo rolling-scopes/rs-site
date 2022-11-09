@@ -3,7 +3,12 @@ import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
 
-import { SocialNetworkingListT, SocialTypeStateT } from 'types';
+import {
+  SocialNetworkingListT,
+  SocialTypeStateT,
+  SocialIconT,
+  SocialNetworkingItemT
+} from 'types';
 
 import ModalSocialNetworking from './parts/ModalSocialNetworking';
 
@@ -13,44 +18,38 @@ type SocialNetworkingP = {
   socialList: SocialNetworkingListT;
 };
 
+const ImageIcon = ({ icon, name }: SocialIconT) => (
+  <Image
+    src={urlForImage(icon.asset._ref).height(24).width(24).url()}
+    height={24}
+    width={24}
+    alt={name}
+  />
+);
+
 const SocialNetworking: React.FC<SocialNetworkingP> = props => {
   const { socialList } = props;
-  const [socialListState, setSocialListState] = useState<SocialTypeStateT>(
-    socialList.map(item => ({
-      ...item,
-      openModal: false
-    }))
-  );
+  const [socialState, setSocialState] = useState<SocialTypeStateT>({
+    openModalItem: null,
+    items: socialList
+  });
 
-  const onOpenModal = (_id: string) =>
-    setSocialListState([
-      ...socialListState.map(item =>
-        item._id === _id ? { ...item, openModal: true } : item
-      )
-    ]);
+  const onOpenModal = (item: SocialNetworkingItemT) =>
+    setSocialState(prevState => ({ ...prevState, openModalItem: item }));
 
   return (
     <section className={styles.block}>
       <h2 className={styles.title}>Мы в социальных сетях</h2>
       <ul className={styles.socialList}>
-        {socialListState.map(item => (
+        {socialState.items.map(item => (
           <li className={styles.socialItem} key={item._id}>
             {item.social_item_link.length > 1 ? (
               <button
                 className={styles.socialBtn}
                 type={'button'}
-                onClick={() => onOpenModal(item._id)}
+                onClick={() => onOpenModal(item)}
               >
-                <Image
-                  src={urlForImage(item.icon.asset._ref)
-                    .height(24)
-                    .width(24)
-                    .url()}
-                  height={24}
-                  width={24}
-                  alt={item.name}
-                  loading={'lazy'}
-                />
+                <ImageIcon icon={item.icon} name={item.name} />
               </button>
             ) : (
               <a
@@ -59,16 +58,7 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
                 className={styles.socialBtn}
                 rel="noreferrer"
               >
-                <Image
-                  src={urlForImage(item.icon.asset._ref)
-                    .height(24)
-                    .width(24)
-                    .url()}
-                  height={24}
-                  width={24}
-                  loading={'lazy'}
-                  alt={item.name}
-                />
+                <ImageIcon icon={item.icon} name={item.name} />
               </a>
             )}
             <span className={styles.socialName}>{item.name}</span>
@@ -76,8 +66,8 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
         ))}
       </ul>
       <ModalSocialNetworking
-        socialListState={socialListState}
-        setSocialListState={setSocialListState}
+        openModalItem={socialState.openModalItem}
+        setSocialListState={setSocialState}
       />
     </section>
   );

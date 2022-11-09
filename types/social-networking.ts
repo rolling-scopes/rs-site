@@ -11,8 +11,14 @@ export type SocialNetworkingItemT = {
   }>;
 };
 
-export type SocialTypeStateT = Array<
-  SocialNetworkingItemT & { openModal: boolean }
->;
+export type SocialTypeStateT = {
+  items: ReadonlyArray<SocialNetworkingItemT>;
+  openModalItem: SocialNetworkingItemT | null;
+};
+
+export type SocialIconT = {
+  name: string;
+  icon: SanityImageObject;
+};
 
 export type SocialNetworkingListT = Array<SocialNetworkingItemT>;
