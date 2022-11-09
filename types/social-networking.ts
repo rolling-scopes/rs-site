@@ -1,4 +1,4 @@
-import {SanityImageObject} from "@sanity/image-url/lib/types/types";
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
 export type SocialNetworkingItemT = {
   _id: string;

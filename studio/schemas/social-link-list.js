@@ -24,7 +24,7 @@ export default {
           type: 'object',
           fields: [
             { name: 'name', type: 'string', title: 'Name link' },
-            { name: 'link', type: 'url', title: 'URL' },
+            { name: 'link', type: 'url', title: 'URL' }
           ]
         }
       ],

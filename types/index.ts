@@ -23,4 +23,3 @@ export interface DonationV2T extends Base, Link {
 export interface CommunityT extends Base {
   picture: SanityImageObject;
 }
-
