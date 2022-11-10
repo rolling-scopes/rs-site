@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { CSSProperties, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
@@ -30,6 +30,20 @@ const ModalSocialNetworking: React.FC<Props> = props => {
   const onCloseModal = () =>
     setSocialListState(prevState => ({ ...prevState, openModalItem: null }));
 
+  const setGridColumns = (): CSSProperties => {
+    const quantityItems = openModalItem.social_item_link.length;
+
+    let gridTemplateColumns = 'repeat(4,232px)';
+
+    if (quantityItems <= 2) {
+      gridTemplateColumns = 'repeat(2,302px)';
+    } else if (quantityItems <= 3) {
+      gridTemplateColumns = 'repeat(3,302px)';
+    }
+
+    return { gridTemplateColumns };
+  };
+
   return (
     <div className={styles.modalSection} tabIndex={-1} aria-hidden="true">
       <div className={styles.modalField}>
@@ -39,7 +53,7 @@ const ModalSocialNetworking: React.FC<Props> = props => {
           </div>
           <span className={styles.iconText}>{openModalItem.name}</span>
         </div>
-        <div className={styles.modalContentSection}>
+        <div className={styles.modalContentSection} style={setGridColumns()}>
           {openModalItem.social_item_link.map((item, index) => (
             <div className={styles.modalContentItem} key={index}>
               <a
@@ -51,6 +65,8 @@ const ModalSocialNetworking: React.FC<Props> = props => {
                 <span className={styles.modalContentTitle}>{item.name}</span>
               </a>
               <p className={styles.modalContentDescription}>
+                Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet
                 Lorem ipsum dolor sit amet
               </p>
             </div>
