@@ -1,0 +1,22 @@
+.block {
+  @apply flex flex-col justify-center h-96 text-center px-8 dark:text-white;
+  background-color: #191b1d;
+}
+
+.container {
+  @apply flex flex-col justify-center items-center mx-auto md:max-w-[50%];
+}
+
+.title {
+  @apply text-slate-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white mb-20;
+}
+
+.companies {
+  @apply flex items-center;
+}
+
+.link {
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 ml-8;
+  color: #191b1d;
+  position: relative;
+}
