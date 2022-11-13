@@ -9,13 +9,10 @@ export async function getPostFromFolderName(folderName: string) {
   const { MARKDOWNS_PATH, FAQ_PATH } = config;
   const folderPath = path.join(MARKDOWNS_PATH, FAQ_PATH, folderName);
   const fileNames = await fs.readdir(folderPath);
-  const getFileSourcePromises = fileNames.map(
-    filename =>
-      new Promise(resolve => {
-        resolve(getFileSource(folderPath, filename));
-      })
+  const getFileSourcePromises = fileNames.map(filename =>
+    getFileSource(folderPath, filename)
   );
-  const postData = (await Promise.all(getFileSourcePromises)) as PostData;
+  const postData: PostData = await Promise.all(getFileSourcePromises);
   const transformed = await transformPostData(postData);
 
   return transformed;

@@ -11,6 +11,12 @@ export type AccordionItem = {
   >;
 };
 
-export type PostData = [{ title: Buffer }, { content: Buffer }];
+type Title = { title: Buffer };
 
-export type PostSourceFile = { title: Buffer } | { content: Buffer };
+type Content = { content: Buffer };
+
+export type Data = Partial<Title & Content>;
+
+export type PostSourceFile = Title | Content;
+
+export type PostData = PostSourceFile[];
