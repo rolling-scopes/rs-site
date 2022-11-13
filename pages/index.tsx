@@ -8,26 +8,24 @@ import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
 import { FAQ } from '@/components/FAQ';
-import {
-  Accordion,
-  type AccordionItem,
-  getFAQMarkdowns
-} from '@/components/Accordion';
+import { Accordion } from '@/components/Accordion';
 import {
   CommunityT,
   DonationV1T,
   DonationV2T,
   SocialNetworkingListT,
-  SpeakersT
+  SpeakersT,
+  AccordionItem
 } from '../types';
+import { getFAQMarkdowns } from '../services';
 
 type Props = {
-  socialNetworksList: any;
-  donationV1: any;
-  donationV2: any;
-  speakers: any;
-  community: any;
-  preview: any;
+  socialNetworksList: SocialNetworkingListT;
+  donationV1: DonationV1T[];
+  donationV2: DonationV2T[];
+  speakers: SpeakersT;
+  community: CommunityT[];
+  preview: boolean;
   faqMarkdowns: AccordionItem[];
 };
 
@@ -84,7 +82,7 @@ const Index: NextPage<Props> = ({
       <Community community={allCommunity[0]} />
       <Speakers speaker={allSpeakers[0]} />
       <FAQ link="/">
-        <Accordion posts={faqMarkdowns || []} length={5} />
+        <Accordion posts={faqMarkdowns || []} limit={5} />
       </FAQ>
     </>
   );

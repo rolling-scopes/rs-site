@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import type { AccordionItem as AccordionItemType } from './model/types';
+import type { AccordionItem as AccordionItemType } from 'types';
 import styles from './styles.module.scss';
 import { AccordionItem } from './ui/AccordionItem';
 
 type Props = {
   posts: AccordionItemType[];
-  length?: number;
+  limit?: number;
 };
 
-const Accordion: FC<Props> = ({ posts, length }) => {
-  const slicedPosts = posts.slice(0, length);
+const Accordion: FC<Props> = ({ posts, limit }) => {
+  const slicedPosts = posts.slice(0, limit);
 
   return (
     <ul className={styles.accordion}>
