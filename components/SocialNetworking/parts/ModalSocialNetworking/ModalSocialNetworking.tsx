@@ -65,9 +65,8 @@ const ModalSocialNetworking: React.FC<Props> = props => {
                 <span className={styles.modalContentTitle}>{item.name}</span>
               </a>
               <p className={styles.modalContentDescription}>
-                Lorem ipsum dolor sit amet
-                Lorem ipsum dolor sit amet
-                Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem
+                ipsum dolor sit amet
               </p>
             </div>
           ))}

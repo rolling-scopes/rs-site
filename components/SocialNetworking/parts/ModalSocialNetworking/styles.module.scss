@@ -5,7 +5,7 @@
 
 .modalField {
   @apply relative p-20 flex flex-col items-center justify-start gap-8;
-  height: 588px;
+  min-height: 588px;
 
   border-radius: 20px;
   background: #ffffff;
