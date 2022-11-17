@@ -16,8 +16,8 @@ import {
   SocialNetworkingListT,
   SpeakersT,
   AccordionItem
-} from '../types';
-import { getFAQMarkdowns } from '../services';
+} from '../../types';
+import { getFAQMarkdowns } from '../../services';
 
 type Props = {
   socialNetworksList: SocialNetworkingListT;

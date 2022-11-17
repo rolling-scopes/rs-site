@@ -13,8 +13,8 @@ export default function Speakers({ speaker }: Props) {
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
         <span className={styles.description}>{description}</span>
-        <Link href={link ?? ''}>
-          <a className={styles.link}>{titleLink}</a>
+        <Link href={link ?? ''} className={styles.link}>
+          {titleLink}
         </Link>
       </div>
     </section>
