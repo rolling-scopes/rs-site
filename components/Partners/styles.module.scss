@@ -1,6 +1,5 @@
 .block {
-  @apply flex flex-col justify-center h-96 text-center px-8 dark:text-white;
-  background-color: #191b1d;
+  @apply flex flex-col justify-center h-96 text-center px-8 dark:text-white bg-[#191b1d];
 }
 
 .container {
@@ -16,7 +15,5 @@
 }
 
 .link {
-  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 ml-8;
-  color: #191b1d;
-  position: relative;
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 ml-8 relative text-[#191b1d];
 }

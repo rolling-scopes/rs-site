@@ -1,6 +1,5 @@
 .block {
   @apply flex flex-col justify-center h-80 text-center px-8;
-  // background-color: #191b1d;
 }
 
 .container {
@@ -16,6 +15,5 @@
 }
 
 .link {
-  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6 ml-8;
-  background-color: #191b1d;
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6 ml-8 bg-[#191b1d];
 }
