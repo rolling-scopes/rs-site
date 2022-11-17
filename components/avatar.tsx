@@ -1,6 +1,6 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import { urlForImage } from '@/lib/sanity';
-import Image from 'next/image'
+import Image from 'next/image';
 
 type Props = {
   name: string;

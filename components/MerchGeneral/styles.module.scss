@@ -1,0 +1,19 @@
+.block {
+  @apply flex flex-col justify-center h-80 text-center px-8;
+}
+
+.container {
+  @apply flex flex-col justify-center items-center mx-auto md:max-w-[50%];
+}
+
+.title {
+  @apply text-slate-900 text-4xl tracking-tight font-extrabold sm:text-5xl;
+}
+
+.description {
+  @apply mt-6 text-base w-3/5;
+}
+
+.link {
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6 ml-8 bg-[#191b1d];
+}
