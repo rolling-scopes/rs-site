@@ -26,6 +26,17 @@ export type SpeakersT = Base & Link;
 
 export type DonationV1T = Base & Link;
 
+export type MerchGeneralT = Base & Link;
+
+export type PartnersT = {
+  title: string;
+  companies: {
+    name: string;
+    link: string;
+    picture: SanityImageObject;
+  }[];
+};
+
 export interface DonationV2T extends Base, Link {
   picture: SanityImageObject;
 }
