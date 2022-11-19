@@ -15,6 +15,8 @@ import donationV1 from './donation-v1';
 import donationV2 from './donation-v2';
 import speakers from './speakers';
 import community from './community';
+import partners from './partners';
+import merchGeneral from './merch-general';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -30,6 +32,8 @@ export default createSchema({
     donationV1,
     donationV2,
     speakers,
-    community
+    community,
+    partners,
+    merchGeneral
   ])
 });

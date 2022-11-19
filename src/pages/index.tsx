@@ -10,9 +10,13 @@ import {
   CommunityT,
   DonationV1T,
   DonationV2T,
+  MerchGeneralT,
+  PartnersT,
   SocialNetworkingListT,
   SpeakersT
 } from 'types';
+import Partners from '@/components/Partners';
+import MerchGeneral from '@/components/MerchGeneral';
 
 export default function Index({
   socialNetworksList: initialSocialNetworksList,
@@ -20,8 +24,24 @@ export default function Index({
   donationV2: initialDonationV2,
   speakers: initialSpeakers,
   community: initialCommunity,
+  partners: initialPartners,
+  merchGeneral: initialMerchGeneral,
   preview
 }) {
+  const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
+    queries.donationV1,
+    {
+      initialData: initialMerchGeneral,
+      enabled: preview
+    }
+  );
+  const { data: allPartners } = usePreviewSubscription<PartnersT[]>(
+    queries.donationV1,
+    {
+      initialData: initialPartners,
+      enabled: preview
+    }
+  );
   const { data: allDonationV1 } = usePreviewSubscription<DonationV1T[]>(
     queries.donationV1,
     {
@@ -65,6 +85,8 @@ export default function Index({
       <DonationV1 donation={allDonationV1[0]} />
       <Community community={allCommunity[0]} />
       <Speakers speaker={allSpeakers[0]} />
+      <MerchGeneral merch={allMerchGeneral[0]} />
+      <Partners partners={allPartners[0]} />
     </>
   );
 }
@@ -85,6 +107,12 @@ export async function getStaticProps({ preview = false }) {
   const community = overlayDrafts(
     await getClient(preview).fetch(queries.community)
   );
+  const partners = overlayDrafts(
+    await getClient(preview).fetch(queries.partners)
+  );
+  const merchGeneral = overlayDrafts(
+    await getClient(preview).fetch(queries.merchGeneral)
+  );
 
   return {
     props: {
@@ -93,6 +121,8 @@ export async function getStaticProps({ preview = false }) {
       donationV2,
       speakers,
       community,
+      partners,
+      merchGeneral,
       preview
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
