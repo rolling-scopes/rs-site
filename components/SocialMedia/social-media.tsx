@@ -5,11 +5,11 @@ import { urlForImage } from '@/lib/sanity';
 
 import { SocialTypeStateT, SocialIconT, SocialMediaItemT } from 'types';
 
-import ModalSocialNetworking from './parts/ModalSocialNetworking';
+import ModalSocialMedia from './parts/ModalSocialMedia';
 
 import styles from './styles.module.scss';
 
-type SocialNetworkingP = {
+type SocialMediaP = {
   socialList: Array<SocialMediaItemT>;
 };
 
@@ -22,8 +22,8 @@ const ImageIcon = ({ icon, name }: SocialIconT) => (
   />
 );
 
-const SocialNetworking: React.FC<SocialNetworkingP> = props => {
-  const { socialList } = props;
+const SocialMedia: React.FC<SocialMediaP> = props => {
+  const { socialList } = props || {};
 
   const [socialState, setSocialState] = useState<SocialTypeStateT>({
     openModalItem: null,
@@ -49,7 +49,7 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
               </button>
             ) : (
               <a
-                href={item.item_chanel_list[0].channel_link}
+                href={item.item_chanel_list[0].channel_link ?? ''}
                 target={'_blank'}
                 className={styles.socialBtn}
                 rel="noreferrer"
@@ -61,7 +61,7 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
           </li>
         ))}
       </ul>
-      <ModalSocialNetworking
+      <ModalSocialMedia
         openModalItem={socialState.openModalItem}
         setSocialListState={setSocialState}
       />
@@ -69,4 +69,4 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
   );
 };
 
-export default SocialNetworking;
+export default SocialMedia;

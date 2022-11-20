@@ -1,6 +1,6 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-export * from './social-networking';
+export * from './social-media';
 
 type Link = {
   titleLink: string;

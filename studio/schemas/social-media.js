@@ -5,8 +5,8 @@ export default {
   fields: [
     {
       title: 'Social media list',
-      name:'social_media_title',
-      type: 'string',
+      name: 'social_media_title',
+      type: 'string'
     },
     {
       title: 'Social media list',

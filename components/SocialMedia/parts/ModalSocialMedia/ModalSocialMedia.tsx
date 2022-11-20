@@ -22,8 +22,8 @@ const ImageIcon = ({ icon, name }: SocialIconT) => (
   />
 );
 
-const ModalSocialNetworking: React.FC<Props> = props => {
-  const { openModalItem, setSocialListState } = props;
+const ModalSocialMedia: React.FC<Props> = props => {
+  const { openModalItem, setSocialListState } = props || {};
 
   if (!openModalItem) return null;
 
@@ -57,7 +57,7 @@ const ModalSocialNetworking: React.FC<Props> = props => {
           {openModalItem.item_chanel_list.map((item, index) => (
             <div className={styles.modalContentItem} key={index}>
               <a
-                href={item.channel_link}
+                href={item.channel_link ?? ''}
                 target={'_blank'}
                 className={styles.socialBtn}
                 rel="noreferrer"
@@ -88,4 +88,4 @@ const ModalSocialNetworking: React.FC<Props> = props => {
   );
 };
 
-export default ModalSocialNetworking;
+export default ModalSocialMedia;
