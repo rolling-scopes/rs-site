@@ -28,10 +28,10 @@
   line-height: 36px;
 }
 
-.modalContentSection {
+.modalContent {
   display: grid;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
 
   @apply gap-8;
 }
@@ -40,12 +40,17 @@
   @apply flex justify-start items-center flex-col flex-1;
 }
 
-.modalContentTitle {
-  @apply mb-4 text-2xl font-semibold underline text-center;
+.name {
+  @apply mb-2 text-xl font-semibold underline text-center;
 }
 
-.modalContentDescription {
-  @apply text-lg font-medium text-center;
+.members {
+  @apply mb-5 text-base font-semibold underline text-center;
+  color: #9FA1AE;
+}
+
+.description {
+  @apply text-base font-medium text-center;
 }
 
 .btnClose {

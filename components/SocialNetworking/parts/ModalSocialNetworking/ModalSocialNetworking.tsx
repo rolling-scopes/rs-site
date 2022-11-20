@@ -3,12 +3,12 @@ import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
 
-import { SocialIconT, SocialNetworkingItemT, SocialTypeStateT } from 'types';
+import { SocialIconT, SocialMediaItemT, SocialTypeStateT } from 'types';
 
 import styles from './styles.module.scss';
 
 interface Props {
-  openModalItem: SocialNetworkingItemT | null;
+  openModalItem: SocialMediaItemT | null;
   setSocialListState: Dispatch<SetStateAction<SocialTypeStateT>>;
 }
 
@@ -31,7 +31,7 @@ const ModalSocialNetworking: React.FC<Props> = props => {
     setSocialListState(prevState => ({ ...prevState, openModalItem: null }));
 
   const setGridColumns = (): CSSProperties => {
-    const quantityItems = openModalItem.social_item_link.length;
+    const quantityItems = openModalItem.item_chanel_list.length;
 
     let gridTemplateColumns = 'repeat(4,232px)';
 
@@ -53,20 +53,24 @@ const ModalSocialNetworking: React.FC<Props> = props => {
           </div>
           <span className={styles.iconText}>{openModalItem.name}</span>
         </div>
-        <div className={styles.modalContentSection} style={setGridColumns()}>
-          {openModalItem.social_item_link.map((item, index) => (
+        <div className={styles.modalContent} style={setGridColumns()}>
+          {openModalItem.item_chanel_list.map((item, index) => (
             <div className={styles.modalContentItem} key={index}>
               <a
-                href={item.link}
+                href={item.channel_link}
                 target={'_blank'}
                 className={styles.socialBtn}
                 rel="noreferrer"
               >
-                <span className={styles.modalContentTitle}>{item.name}</span>
+                <p className={styles.name}>{item.channel_name}</p>
               </a>
-              <p className={styles.modalContentDescription}>
-                Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem
-                ipsum dolor sit amet
+              <p className={styles.members}>
+                {item.channel_country_members} подписчиков
+              </p>
+              <p className={styles.description}>
+                {item.channel_description.length > 70
+                  ? `${item.channel_description.substring(0, 70)} ...`
+                  : item.channel_description}
               </p>
             </div>
           ))}

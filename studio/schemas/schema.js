@@ -10,7 +10,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // import blockContent from './blockContent'
 import post from './post';
 import author from './author';
-import socialLink from './social-link';
+import socialMedia from './social-media';
 import donationV1 from './donation-v1';
 import donationV2 from './donation-v2';
 import speakers from './speakers';
@@ -20,20 +20,20 @@ import merchGeneral from './merch-general';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
-  // We name our schema
-  name: 'default',
-  // Then proceed to concatenate our document type
-  // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    /* Your types here! */
-    post,
-    author,
-    socialLink,
-    donationV1,
-    donationV2,
-    speakers,
-    community,
-    partners,
-    merchGeneral
-  ])
+    // We name our schema
+    name: 'default',
+    // Then proceed to concatenate our document type
+    // to the ones provided by any plugins that are installed
+    types: schemaTypes.concat([
+        /* Your types here! */
+        post,
+        author,
+        socialMedia,
+        donationV1,
+        donationV2,
+        speakers,
+        community,
+        partners,
+        merchGeneral,
+    ])
 });

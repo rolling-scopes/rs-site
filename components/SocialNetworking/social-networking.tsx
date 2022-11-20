@@ -3,19 +3,14 @@ import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
 
-import {
-  SocialNetworkingListT,
-  SocialTypeStateT,
-  SocialIconT,
-  SocialNetworkingItemT
-} from 'types';
+import { SocialTypeStateT, SocialIconT, SocialMediaItemT } from 'types';
 
 import ModalSocialNetworking from './parts/ModalSocialNetworking';
 
 import styles from './styles.module.scss';
 
 type SocialNetworkingP = {
-  socialList: SocialNetworkingListT;
+  socialList: Array<SocialMediaItemT>;
 };
 
 const ImageIcon = ({ icon, name }: SocialIconT) => (
@@ -29,12 +24,13 @@ const ImageIcon = ({ icon, name }: SocialIconT) => (
 
 const SocialNetworking: React.FC<SocialNetworkingP> = props => {
   const { socialList } = props;
+
   const [socialState, setSocialState] = useState<SocialTypeStateT>({
     openModalItem: null,
     items: socialList
   });
 
-  const onOpenModal = (item: SocialNetworkingItemT) =>
+  const onOpenModal = (item: SocialMediaItemT) =>
     setSocialState(prevState => ({ ...prevState, openModalItem: item }));
 
   return (
@@ -42,8 +38,8 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
       <h2 className={styles.title}>Мы в социальных сетях</h2>
       <ul className={styles.socialList}>
         {socialState.items.map(item => (
-          <li className={styles.socialItem} key={item._id}>
-            {item.social_item_link.length > 1 ? (
+          <li className={styles.socialItem} key={item.name}>
+            {item.item_chanel_list.length > 1 ? (
               <button
                 className={styles.socialBtn}
                 type={'button'}
@@ -53,7 +49,7 @@ const SocialNetworking: React.FC<SocialNetworkingP> = props => {
               </button>
             ) : (
               <a
-                href={item.social_item_link[0].link}
+                href={item.item_chanel_list[0].channel_link}
                 target={'_blank'}
                 className={styles.socialBtn}
                 rel="noreferrer"

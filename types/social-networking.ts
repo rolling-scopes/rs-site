@@ -1,19 +1,26 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-export type SocialNetworkingItemT = {
-  _id: string;
+export type SocialMediaItemT = {
+  _key: string;
   name: string;
   icon: SanityImageObject;
-  social_item_link: Array<{
-    _id: string;
-    name: string;
-    link: string;
+  item_chanel_list: Array<{
+    _key: string;
+    channel_name: string;
+    channel_link: string;
+    channel_country_members: string;
+    channel_description: string;
   }>;
 };
 
+export type SocialMediaListT = {
+  _id: string;
+  social_media_list: Array<SocialMediaItemT>;
+};
+
 export type SocialTypeStateT = {
-  items: ReadonlyArray<SocialNetworkingItemT>;
-  openModalItem: SocialNetworkingItemT | null;
+  items: ReadonlyArray<SocialMediaItemT>;
+  openModalItem: SocialMediaItemT | null;
 };
 
 export type SocialIconT = {
@@ -21,4 +28,4 @@ export type SocialIconT = {
   icon: SanityImageObject;
 };
 
-export type SocialNetworkingListT = Array<SocialNetworkingItemT>;
+export type SocialNetworkingListT = SocialMediaListT;
