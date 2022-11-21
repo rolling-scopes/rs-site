@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
 
-import { SocialTypeStateT, SocialIconT, SocialMediaItemT } from 'types';
+import { SocialIconT, SocialMediaItemT } from 'types';
 
 import ModalSocialMedia from './parts/ModalSocialMedia';
 
@@ -24,20 +24,14 @@ const ImageIcon = ({ icon, name }: SocialIconT) => (
 
 const SocialMedia: React.FC<SocialMediaP> = props => {
   const { socialList } = props || {};
-
-  const [socialState, setSocialState] = useState<SocialTypeStateT>({
-    openModalItem: null,
-    items: socialList
-  });
-
-  const onOpenModal = (item: SocialMediaItemT) =>
-    setSocialState(prevState => ({ ...prevState, openModalItem: item }));
+  const [modal, setModal] = useState<SocialMediaItemT | null>(null);
+  const onOpenModal = (item: SocialMediaItemT) => setModal(item);
 
   return (
     <section className={styles.block}>
       <h2 className={styles.title}>Мы в социальных сетях</h2>
       <ul className={styles.socialList}>
-        {socialState.items.map(item => (
+        {socialList.map(item => (
           <li className={styles.socialItem} key={item.name}>
             {item.item_chanel_list.length > 1 ? (
               <button
@@ -61,10 +55,7 @@ const SocialMedia: React.FC<SocialMediaP> = props => {
           </li>
         ))}
       </ul>
-      <ModalSocialMedia
-        openModalItem={socialState.openModalItem}
-        setSocialListState={setSocialState}
-      />
+      <ModalSocialMedia modalItem={modal} setModal={setModal} />
     </section>
   );
 };

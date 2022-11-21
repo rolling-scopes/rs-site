@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
 
-import { SocialIconT, SocialMediaItemT, SocialTypeStateT } from 'types';
+import { SocialIconT, SocialMediaItemT } from 'types';
 
 import styles from './styles.module.scss';
 
 interface Props {
-  openModalItem: SocialMediaItemT | null;
-  setSocialListState: Dispatch<SetStateAction<SocialTypeStateT>>;
+  modalItem: SocialMediaItemT | null;
+  setModal: Dispatch<SetStateAction<SocialMediaItemT>>;
 }
 
 const ImageIcon = ({ icon, name }: SocialIconT) => (
@@ -23,15 +23,14 @@ const ImageIcon = ({ icon, name }: SocialIconT) => (
 );
 
 const ModalSocialMedia: React.FC<Props> = props => {
-  const { openModalItem, setSocialListState } = props || {};
+  const { modalItem, setModal } = props || {};
 
-  if (!openModalItem) return null;
+  if (!modalItem) return null;
 
-  const onCloseModal = () =>
-    setSocialListState(prevState => ({ ...prevState, openModalItem: null }));
+  const onCloseModal = () => setModal(null);
 
   const setGridColumns = (): CSSProperties => {
-    const quantityItems = openModalItem.item_chanel_list.length;
+    const quantityItems = modalItem.item_chanel_list.length;
 
     let gridTemplateColumns = 'repeat(4,232px)';
 
@@ -49,12 +48,12 @@ const ModalSocialMedia: React.FC<Props> = props => {
       <div className={styles.modalField}>
         <div className={styles.modalIconBlock}>
           <div className={styles.icon}>
-            <ImageIcon icon={openModalItem.icon} name={openModalItem.name} />
+            <ImageIcon icon={modalItem.icon} name={modalItem.name} />
           </div>
-          <span className={styles.iconText}>{openModalItem.name}</span>
+          <span className={styles.iconText}>{modalItem.name}</span>
         </div>
         <div className={styles.modalContent} style={setGridColumns()}>
-          {openModalItem.item_chanel_list.map((item, index) => (
+          {modalItem.item_chanel_list.map((item, index) => (
             <div className={styles.modalContentItem} key={index}>
               <a
                 href={item.channel_link ?? ''}

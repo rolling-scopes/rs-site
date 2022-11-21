@@ -18,11 +18,6 @@ export type SocialMediaListT = {
   social_media_list: Array<SocialMediaItemT>;
 };
 
-export type SocialTypeStateT = {
-  items: ReadonlyArray<SocialMediaItemT>;
-  openModalItem: SocialMediaItemT | null;
-};
-
 export type SocialIconT = {
   name: string;
   icon: SanityImageObject;

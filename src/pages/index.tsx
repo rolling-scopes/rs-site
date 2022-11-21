@@ -24,7 +24,6 @@ import {
   SpeakersT
 } from 'types';
 
-
 export default function Index({
   socialMedia: initialSocialMedia,
   donationV1: initialDonationV1,
