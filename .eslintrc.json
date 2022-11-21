@@ -1,7 +1,9 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb-base", "prettier"],
+  "extends": ["next", "next/core-web-vitals", "airbnb-base", "prettier"],
   "rules": {
-    "import/extensions": ["error", "never"],
-    "no-underscore-dangle": ["error", { "allow": ["_ref", "_id"] }]
+    "import/extensions": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_ref", "_id"] }],
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off"
   }
 }

@@ -15,5 +15,11 @@ module.exports = withMDX({
       { hostname: 'source.unsplash.com' }
     ]
   },
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  webpack5: true,
+  webpack: config => {
+    config.resolve.fallback = { fs: false, path: false };
+
+    return config;
+  }
 });
