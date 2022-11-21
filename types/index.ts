@@ -1,4 +1,5 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
 
 export type SocialNetworkingItemT = {
   _id: string;
@@ -45,3 +46,14 @@ export interface CommunityT extends Base {
 }
 
 export type SocialNetworkingListT = Array<SocialNetworkingItemT>;
+
+export type AccordionItem = {
+  content: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, string>
+  >;
+  title: MDXRemoteSerializeResult<
+    Record<string, unknown>,
+    Record<string, string>
+  >;
+};
