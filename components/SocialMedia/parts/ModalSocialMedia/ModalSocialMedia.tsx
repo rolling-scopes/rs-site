@@ -44,8 +44,13 @@ const ModalSocialMedia: React.FC<Props> = props => {
   };
 
   return (
-    <div className={styles.modalSection} tabIndex={-1} aria-hidden="true">
-      <div className={styles.modalField}>
+    <div
+      className={styles.modalSection}
+      tabIndex={-1}
+      aria-hidden="true"
+      onClick={onCloseModal}
+    >
+      <div className={styles.modalField} onClick={e => e.stopPropagation()}>
         <div className={styles.modalIconBlock}>
           <div className={styles.icon}>
             <ImageIcon icon={modalItem.icon} name={modalItem.name} />
