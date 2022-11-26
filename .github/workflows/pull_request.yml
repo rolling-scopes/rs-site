@@ -21,4 +21,4 @@ jobs:
       - name: install deps
         run: npm install
       - name: run unit tests
-        run: npm test
+        run: npm run test -- --watchAll=false --passWithNoTests
