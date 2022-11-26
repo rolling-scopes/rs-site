@@ -1,11 +1,4 @@
-import { usePreviewSubscription } from '@/lib/sanity';
-import { getClient, overlayDrafts } from '@/lib/sanity.server';
-import queries from '@/lib/queries';
-import SocialNetworking from '@/components/SocialNetworking';
-import DonationV2 from '@/components/DonationV2';
-import DonationV1 from '@/components/DonationV1';
-import Speakers from '@/components/Speakers';
-import Community from '@/components/Community';
+import { getFAQMarkdowns } from 'services';
 import {
   CommunityT,
   DonationV1T,
@@ -15,8 +8,18 @@ import {
   SocialNetworkingListT,
   SpeakersT
 } from 'types';
+import { usePreviewSubscription } from '@/lib/sanity';
+import { getClient, overlayDrafts } from '@/lib/sanity.server';
+import queries from '@/lib/queries';
+import SocialNetworking from '@/components/SocialNetworking';
+import DonationV2 from '@/components/DonationV2';
+import DonationV1 from '@/components/DonationV1';
+import Speakers from '@/components/Speakers';
+import Community from '@/components/Community';
 import Partners from '@/components/Partners';
 import MerchGeneral from '@/components/MerchGeneral';
+import { FAQ } from '@/components/FAQ';
+import { Accordion } from '@/components/Accordion';
 
 export default function Index({
   socialNetworksList: initialSocialNetworksList,
@@ -26,7 +29,8 @@ export default function Index({
   community: initialCommunity,
   partners: initialPartners,
   merchGeneral: initialMerchGeneral,
-  preview
+  preview,
+  faqMarkdowns
 }) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
     queries.donationV1,
@@ -87,6 +91,9 @@ export default function Index({
       <Speakers speaker={allSpeakers[0]} />
       <MerchGeneral merch={allMerchGeneral[0]} />
       <Partners partners={allPartners[0]} />
+      <FAQ link="/">
+        <Accordion posts={faqMarkdowns || []} limit={5} />
+      </FAQ>
     </>
   );
 }
@@ -114,6 +121,8 @@ export async function getStaticProps({ preview = false }) {
     await getClient(preview).fetch(queries.merchGeneral)
   );
 
+  const faqMarkdowns = await getFAQMarkdowns();
+
   return {
     props: {
       socialNetworksList,
@@ -123,7 +132,8 @@ export async function getStaticProps({ preview = false }) {
       community,
       partners,
       merchGeneral,
-      preview
+      preview,
+      faqMarkdowns
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60

@@ -1,0 +1,27 @@
+.wrapper {
+  @apply flex justify-center py-[98px];
+}
+
+.faq {
+  @apply flex flex-col gap-[10px] text-[#191b1d];
+}
+
+.header {
+  @apply text-[30px] font-bold leading-[36px] tracking-[0];
+}
+
+.accordion {
+  @apply px-[108px];
+}
+
+.link {
+  @apply text-[24px] font-normal leading-[31px] tracking-[0] mt-[10px] text-right no-underline;
+}
+
+.text {
+  @apply relative after:content-[''];
+}
+
+.text::after {
+  @apply absolute bottom-0 left-0 w-[100%] h-[2px] bg-[#191b1d];
+}

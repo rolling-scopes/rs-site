@@ -1,0 +1,36 @@
+.accordionItem {
+  @apply transition-all flex flex-col gap-0 border-b-[1px] border-solid border-[#000000];
+}
+
+.withPadding {
+  @apply pb-[30px];
+}
+
+.accordionItemTitle {
+  @apply font-semibold text-[24px] leading-[30px] relative cursor-pointer py-[30px];
+}
+
+.accordionItemContent {
+  @apply text-[16px] font-normal leading-[24px] pr-[20px] overflow-y-hidden h-0;
+}
+
+.showContent {
+  @apply h-auto;
+}
+
+.plus {
+  --b: 5px;
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #fff 90deg,
+      #000 0
+    )
+    calc(100% + var(--b) / 2) calc(100% + var(--b) / 2) / calc(50% + var(--b))
+    calc(50% + var(--b));
+
+  @apply w-[20px] aspect-[1] inline-block border-none m-0 absolute right-0 top-[50%] translate-y-[-50%];
+}
+
+.rotatePlus {
+  @apply translate-y-[-50%] rotate-45;
+}
