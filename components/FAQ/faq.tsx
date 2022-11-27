@@ -11,10 +11,8 @@ const FAQ: FC<Props> = ({ children, link }) => (
     <div className={styles.faq}>
       <h2 className={styles.header}>Частые вопросы и ответы</h2>
       <main className={styles.accordion}>{children}</main>
-      <Link href={link}>
-        <a className={styles.link}>
-          <span className={styles.text}>Смотреть больше ...</span>
-        </a>
+      <Link href={link} className={styles.link}>
+        <span className={styles.text}>Смотреть больше ...</span>
       </Link>
     </div>
   </section>

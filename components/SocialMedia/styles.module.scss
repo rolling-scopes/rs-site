@@ -1,0 +1,32 @@
+.block {
+  @apply p-20 flex flex-col gap-8 justify-start w-full;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 36px;
+  @apply text-title-color-1;
+}
+
+.socialList {
+  @apply w-full flex flex-row justify-center items-center gap-12 list-none;
+}
+
+.socialItem {
+  @apply flex flex-col justify-start items-center gap-2;
+}
+
+.socialBtn {
+  width: 87px;
+  height: 87px;
+
+  background-color: #f2f3f7;
+
+  @apply flex justify-center items-center rounded-full cursor-pointer;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
