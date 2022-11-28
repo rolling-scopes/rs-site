@@ -1,16 +1,7 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
 
-export type SocialNetworkingItemT = {
-  _id: string;
-  social_item_link: Array<{
-    _id: string;
-    name: string;
-    link: string;
-    country: string;
-  }>;
-  social_name: string;
-};
+export * from './social-media';
 
 type Link = {
   titleLink: string;
@@ -44,8 +35,6 @@ export interface DonationV2T extends Base, Link {
 export interface CommunityT extends Base {
   picture: SanityImageObject;
 }
-
-export type SocialNetworkingListT = Array<SocialNetworkingItemT>;
 
 export type AccordionItem = {
   content: MDXRemoteSerializeResult<

@@ -10,7 +10,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 // import blockContent from './blockContent'
 import post from './post';
 import author from './author';
-import socialLink from './social-link';
+import socialMedia from './social-media';
 import donationV1 from './donation-v1';
 import donationV2 from './donation-v2';
 import speakers from './speakers';
@@ -28,7 +28,7 @@ export default createSchema({
     /* Your types here! */
     post,
     author,
-    socialLink,
+    socialMedia,
     donationV1,
     donationV2,
     speakers,
