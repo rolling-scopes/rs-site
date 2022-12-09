@@ -1,17 +1,7 @@
-import { getFAQMarkdowns } from 'services';
-import {
-  CommunityT,
-  DonationV1T,
-  DonationV2T,
-  MerchGeneralT,
-  PartnersT,
-  SocialNetworkingListT,
-  SpeakersT
-} from 'types';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
-import SocialNetworking from '@/components/SocialNetworking';
+import SocialMedia from '@/components/SocialMedia';
 import DonationV2 from '@/components/DonationV2';
 import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
@@ -21,8 +11,21 @@ import MerchGeneral from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 
+import { getFAQMarkdowns } from 'services';
+
+import {
+  CommunityT,
+  DonationV1T,
+  DonationV2T,
+  MerchGeneralT,
+  PartnersT,
+  SocialMediaItemT,
+  SocialNetworkingListT,
+  SpeakersT
+} from 'types';
+
 export default function Index({
-  socialNetworksList: initialSocialNetworksList,
+  socialMedia: initialSocialMedia,
   donationV1: initialDonationV1,
   donationV2: initialDonationV2,
   speakers: initialSpeakers,
@@ -67,13 +70,12 @@ export default function Index({
       enabled: preview
     }
   );
-  const { data: allSocialList } = usePreviewSubscription<SocialNetworkingListT>(
-    queries.socialNetworksList,
-    {
-      initialData: initialSocialNetworksList,
-      enabled: preview
-    }
-  );
+  const { data: allSocialList } = usePreviewSubscription<
+    SocialNetworkingListT[]
+  >(queries.socialNetworksList, {
+    initialData: initialSocialMedia,
+    enabled: preview
+  });
   const { data: allSpeakers } = usePreviewSubscription<SpeakersT>(
     queries.speakers,
     {
@@ -84,7 +86,7 @@ export default function Index({
 
   return (
     <>
-      <SocialNetworking socialList={allSocialList} />
+      <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
       <Community community={allCommunity[0]} />
@@ -99,9 +101,10 @@ export default function Index({
 }
 
 export async function getStaticProps({ preview = false }) {
-  const socialNetworksList = overlayDrafts(
-    await getClient(preview).fetch(queries.socialNetworksList)
-  );
+  const socialMedia: Array<{
+    _id;
+    social_media_list: Array<SocialMediaItemT>;
+  }> = overlayDrafts(await getClient(preview).fetch(queries.socialMedia));
   const donationV1 = overlayDrafts(
     await getClient(preview).fetch(queries.donationV1)
   );
@@ -125,7 +128,7 @@ export async function getStaticProps({ preview = false }) {
 
   return {
     props: {
-      socialNetworksList,
+      socialMedia,
       donationV1,
       donationV2,
       speakers,
