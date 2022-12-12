@@ -1,9 +1,9 @@
 @keyframes onFlash {
   from {
-    filter: opacity(0)
+    filter: opacity(0);
   }
   to {
-    filter: opacity(1)
+    filter: opacity(1);
   }
 }
 
@@ -29,21 +29,21 @@
   padding: 120px 108px;
   @apply w-full flex flex-col items-center justify-start;
 
-  background: #191B1D;
+  background: #191b1d;
 }
 
 .title {
   width: 550px;
 
   @apply text-3xl font-bold text-center pb-6;
-  color: #FEFEFE;
+  color: #fefefe;
 }
 
 .text {
   width: 550px;
 
   @apply text-base text-center pb-16;
-  color: #EAEDF5;
+  color: #eaedf5;
 }
 
 .imagesSection {
@@ -67,7 +67,7 @@
   user-select: none;
   user-focus: none;
 
-  background-color: #191B1D;
+  background-color: #191b1d;
 
   &:after {
     display: block;
@@ -88,7 +88,6 @@
     animation: offExtension 1000ms linear forwards;
   }
 }
-
 
 .itemExit {
   & .cursor {
