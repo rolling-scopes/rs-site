@@ -1,1 +1,1 @@
-export {onUpdateCompaniesList} from './onUpdateCompaniesList';
+export { onUpdateCompaniesList } from './onUpdateCompaniesList';

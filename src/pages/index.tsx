@@ -87,10 +87,10 @@ export default function Index({
     }
   );
   const { data: alumniCompanies } =
-    usePreviewSubscription<AlumniCompaniesFetchT>(
-      queries.alumniCompanies,
-      { initialData: initialAlumniCompanies, enabled: preview }
-    );
+    usePreviewSubscription<AlumniCompaniesFetchT>(queries.alumniCompanies, {
+      initialData: initialAlumniCompanies,
+      enabled: preview
+    });
 
   return (
     <>
@@ -133,8 +133,9 @@ export async function getStaticProps({ preview = false }) {
     await getClient(preview).fetch(queries.merchGeneral)
   );
 
-  const alumniCompanies: Array<AlumniCompaniesFetchT> =
-    overlayDrafts(await getClient(preview).fetch(queries.alumniCompanies));
+  const alumniCompanies: Array<AlumniCompaniesFetchT> = overlayDrafts(
+    await getClient(preview).fetch(queries.alumniCompanies)
+  );
 
   const faqMarkdowns = await getFAQMarkdowns();
 
