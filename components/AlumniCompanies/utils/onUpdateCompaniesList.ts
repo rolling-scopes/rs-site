@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ArrayAlumniCompanies } from '../../../types';
+import { AlumniCompaniesT } from '../../../types';
 
 type OnUpdateCompaniesListP = {
-  companies: ArrayAlumniCompanies[];
-  companiesList: ArrayAlumniCompanies[];
-  setCompaniesList: Dispatch<SetStateAction<ArrayAlumniCompanies[]>>;
+  companies: AlumniCompaniesT[];
+  companiesList: AlumniCompaniesT[];
+  setCompaniesList: Dispatch<SetStateAction<AlumniCompaniesT[]>>;
   itemsQty: number;
 };
 

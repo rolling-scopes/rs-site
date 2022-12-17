@@ -5,14 +5,29 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { urlForImage } from '@/lib/sanity';
 import { onUpdateCompaniesList } from './utils';
 
-import { AlumniCompaniesP, ArrayAlumniCompanies } from '../../types';
+import { AlumniCompaniesT, AlumniCompaniesP } from '../../types';
 
 import styles from './styles.module.scss';
 
 const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
   const { companies } = props || {};
-  const visiblyItemsQty = 6;
-  const [companiesList, setCompaniesList] = useState<ArrayAlumniCompanies[]>(
+  const visiblyItemsQty = useMemo(() => 6, []);
+  const timeoutUpdateItemsMs = useMemo(() => 10000, []);
+  const timeoutTransition = useMemo(
+    () => ({ enter: 1200, exit: 1200, appear: 1000 }),
+    []
+  );
+  const styleTransition = useMemo(
+    () => ({
+      enter: styles.itemEnter,
+      enterActive: styles.itemEnterActive,
+      exit: styles.itemExit,
+      exitDone: styles.itemExitActive
+    }),
+    []
+  );
+
+  const [companiesList, setCompaniesList] = useState<AlumniCompaniesT[]>(
     companies.slice(0, visiblyItemsQty)
   );
 
@@ -25,26 +40,11 @@ const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
           setCompaniesList,
           itemsQty: visiblyItemsQty
         }),
-      10000
+      timeoutUpdateItemsMs
     );
 
     return () => clearInterval(interval);
-  }, [companies, companiesList]);
-
-  const styleTransition = useMemo(
-    () => ({
-      enter: styles.itemEnter,
-      enterActive: styles.itemEnterActive,
-      exit: styles.itemExit,
-      exitDone: styles.itemExitActive
-    }),
-    []
-  );
-
-  const timeoutTransition = useMemo(
-    () => ({ enter: 1200, exit: 1200, appear: 1000 }),
-    []
-  );
+  }, [companies, companiesList, timeoutUpdateItemsMs, visiblyItemsQty]);
 
   return (
     <div className={styles.field}>

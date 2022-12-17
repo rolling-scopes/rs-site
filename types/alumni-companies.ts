@@ -1,6 +1,6 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-export type ArrayAlumniCompanies = {
+export type AlumniCompaniesT = {
   _key: string;
   name: string;
   picture: SanityImageObject;
@@ -8,9 +8,9 @@ export type ArrayAlumniCompanies = {
 
 export type AlumniCompaniesFetchT = {
   _id: string;
-  companies: Array<ArrayAlumniCompanies>;
+  companies: Array<AlumniCompaniesT>;
 };
 
 export type AlumniCompaniesP = {
-  companies: Array<ArrayAlumniCompanies>;
+  companies: Array<AlumniCompaniesT>;
 };
