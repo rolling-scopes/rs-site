@@ -76,7 +76,7 @@
     height: 100%;
     width: 5px;
 
-    background-color: #fff;
+    @apply bg-white;
     will-change: filter;
     animation: onFlash 500ms linear infinite;
   }

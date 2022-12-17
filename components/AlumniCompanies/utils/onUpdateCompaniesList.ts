@@ -5,19 +5,20 @@ type OnUpdateCompaniesListP = {
   companies: ArrayAlumniCompanies[];
   companiesList: ArrayAlumniCompanies[];
   setCompaniesList: Dispatch<SetStateAction<ArrayAlumniCompanies[]>>;
+  itemsQty: number;
 };
 
 export const onUpdateCompaniesList = (params: OnUpdateCompaniesListP) => {
-  const { companies, companiesList, setCompaniesList } = params;
+  const { itemsQty, companies, companiesList, setCompaniesList } = params;
 
   const indexLastItem = companies.findIndex(
     item => item.name === companiesList.at(-1).name
   );
-  let newArrayItems = companies.slice(indexLastItem, indexLastItem + 6);
-  if (newArrayItems.length < 6) {
+  let newArrayItems = companies.slice(indexLastItem, indexLastItem + itemsQty);
+  if (newArrayItems.length < itemsQty) {
     newArrayItems = [
       ...newArrayItems,
-      ...companies.slice(0, 6 - newArrayItems.length)
+      ...companies.slice(0, itemsQty - newArrayItems.length)
     ];
   }
 

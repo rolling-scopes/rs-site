@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { urlForImage } from '@/lib/sanity';
 import { onUpdateCompaniesList } from './utils';
+
 import { AlumniCompaniesP, ArrayAlumniCompanies } from '../../types';
 
 import styles from './styles.module.scss';
 
 const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
   const { companies } = props || {};
-
+  const visiblyItemsQty = 6;
   const [companiesList, setCompaniesList] = useState<ArrayAlumniCompanies[]>(
-    companies.slice(0, 6)
+    companies.slice(0, visiblyItemsQty)
   );
 
   useEffect(() => {
@@ -21,13 +22,29 @@ const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
         onUpdateCompaniesList({
           companies,
           companiesList,
-          setCompaniesList
+          setCompaniesList,
+          itemsQty: visiblyItemsQty
         }),
       10000
     );
 
     return () => clearInterval(interval);
   }, [companies, companiesList]);
+
+  const styleTransition = useMemo(
+    () => ({
+      enter: styles.itemEnter,
+      enterActive: styles.itemEnterActive,
+      exit: styles.itemExit,
+      exitDone: styles.itemExitActive
+    }),
+    []
+  );
+
+  const timeoutTransition = useMemo(
+    () => ({ enter: 1200, exit: 1200, appear: 1000 }),
+    []
+  );
 
   return (
     <div className={styles.field}>
@@ -42,13 +59,8 @@ const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
             <CSSTransition
               key={key}
               unmountOnExit
-              timeout={{ enter: 1200, exit: 1200, appear: 1000 }}
-              classNames={{
-                enter: styles.itemEnter,
-                enterActive: styles.itemEnterActive,
-                exit: styles.itemExit,
-                exitDone: styles.itemExitActive
-              }}
+              timeout={timeoutTransition}
+              classNames={styleTransition}
             >
               <div className={styles.wrapper}>
                 <Image
