@@ -2,6 +2,7 @@ import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
 
 export * from './social-media';
+export * from './alumni-companies';
 
 type Link = {
   titleLink: string;

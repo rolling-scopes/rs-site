@@ -10,6 +10,7 @@ import Partners from '@/components/Partners';
 import MerchGeneral from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
+import AlumniCompanies from '@/components/AlumniCompanies';
 
 import { getFAQMarkdowns } from 'services';
 
@@ -21,7 +22,8 @@ import {
   PartnersT,
   SocialMediaItemT,
   SocialNetworkingListT,
-  SpeakersT
+  SpeakersT,
+  AlumniCompaniesFetchT
 } from 'types';
 
 export default function Index({
@@ -32,6 +34,7 @@ export default function Index({
   community: initialCommunity,
   partners: initialPartners,
   merchGeneral: initialMerchGeneral,
+  alumniCompanies: initialAlumniCompanies,
   preview,
   faqMarkdowns
 }) {
@@ -83,6 +86,12 @@ export default function Index({
       enabled: preview
     }
   );
+  const { data: alumniCompanies } =
+    usePreviewSubscription<AlumniCompaniesFetchT>(queries.alumniCompanies, {
+      initialData: initialAlumniCompanies,
+      enabled: preview
+    });
+
 
   return (
     <>
@@ -96,6 +105,7 @@ export default function Index({
       <FAQ link="/">
         <Accordion posts={faqMarkdowns || []} limit={5} />
       </FAQ>
+      <AlumniCompanies companies={alumniCompanies[0].companies} />
     </>
   );
 }
@@ -124,6 +134,10 @@ export async function getStaticProps({ preview = false }) {
     await getClient(preview).fetch(queries.merchGeneral)
   );
 
+  const alumniCompanies: Array<AlumniCompaniesFetchT> = overlayDrafts(
+    await getClient(preview).fetch(queries.alumniCompanies)
+  );
+
   const faqMarkdowns = await getFAQMarkdowns();
 
   return {
@@ -135,6 +149,7 @@ export async function getStaticProps({ preview = false }) {
       community,
       partners,
       merchGeneral,
+      alumniCompanies,
       preview,
       faqMarkdowns
     },

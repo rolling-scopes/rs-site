@@ -1,0 +1,97 @@
+@keyframes onFlash {
+  from {
+    filter: opacity(0);
+  }
+  to {
+    filter: opacity(1);
+  }
+}
+
+@keyframes onExtension {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes offExtension {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.field {
+  padding: 120px 108px;
+  @apply w-full flex flex-col items-center justify-start;
+
+  background: #191b1d;
+}
+
+.title {
+  width: 550px;
+
+  @apply text-3xl font-bold text-center pb-6;
+  color: #fefefe;
+}
+
+.text {
+  width: 550px;
+
+  @apply text-base text-center pb-16;
+  color: #eaedf5;
+}
+
+.imagesSection {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  gap: 48px 72px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.cursor {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  height: 100%;
+  user-select: none;
+  user-focus: none;
+
+  background-color: #191b1d;
+
+  &:after {
+    display: block;
+    content: '';
+
+    height: 100%;
+    width: 5px;
+
+    @apply bg-white;
+    will-change: filter;
+    animation: onFlash 500ms linear infinite;
+  }
+}
+
+.itemEnter {
+  & .cursor {
+    display: block;
+    animation: offExtension 1000ms linear forwards;
+  }
+}
+
+.itemExit {
+  & .cursor {
+    display: block;
+    animation: onExtension 1000ms linear forwards;
+  }
+}
