@@ -11,6 +11,7 @@ import styles from './styles.module.scss';
 
 const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
   const { companies } = props || {};
+
   const visiblyItemsQty = useMemo(() => 6, []);
   const timeoutUpdateItemsMs = useMemo(() => 10000, []);
   const timeoutTransition = useMemo(
@@ -35,10 +36,10 @@ const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
     const interval = setInterval(
       () =>
         onUpdateCompaniesList({
-          companies,
+          arrayCompanies: companies,
           companiesList,
           setCompaniesList,
-          itemsQty: visiblyItemsQty
+          visiblyItemsQty
         }),
       timeoutUpdateItemsMs
     );

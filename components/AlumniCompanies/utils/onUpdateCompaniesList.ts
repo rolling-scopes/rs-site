@@ -2,23 +2,23 @@ import { Dispatch, SetStateAction } from 'react';
 import { AlumniCompaniesT } from '../../../types';
 
 type OnUpdateCompaniesListP = {
-  companies: AlumniCompaniesT[];
+  arrayCompanies: AlumniCompaniesT[];
   companiesList: AlumniCompaniesT[];
   setCompaniesList: Dispatch<SetStateAction<AlumniCompaniesT[]>>;
-  itemsQty: number;
+  visiblyItemsQty: number;
 };
 
 export const onUpdateCompaniesList = (params: OnUpdateCompaniesListP) => {
-  const { itemsQty, companies, companiesList, setCompaniesList } = params;
+  const { visiblyItemsQty, arrayCompanies, companiesList, setCompaniesList } = params;
 
-  const indexLastItem = companies.findIndex(
+  const indexLastItem = arrayCompanies.findIndex(
     item => item.name === companiesList.at(-1).name
   );
-  let newArrayItems = companies.slice(indexLastItem, indexLastItem + itemsQty);
-  if (newArrayItems.length < itemsQty) {
+  let newArrayItems = arrayCompanies.slice(indexLastItem, indexLastItem + visiblyItemsQty);
+  if (newArrayItems.length < visiblyItemsQty) {
     newArrayItems = [
       ...newArrayItems,
-      ...companies.slice(0, itemsQty - newArrayItems.length)
+      ...arrayCompanies.slice(0, visiblyItemsQty - newArrayItems.length)
     ];
   }
 

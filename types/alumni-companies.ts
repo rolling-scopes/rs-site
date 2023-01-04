@@ -6,10 +6,10 @@ export type AlumniCompaniesT = {
   picture: SanityImageObject;
 };
 
-export type AlumniCompaniesFetchT = {
+export type AlumniCompaniesFetchT = Array<{
   _id: string;
   companies: Array<AlumniCompaniesT>;
-};
+}>;
 
 export type AlumniCompaniesP = {
   companies: Array<AlumniCompaniesT>;
