@@ -1,0 +1,118 @@
+.card {
+  @apply relative flex flex-col cursor-default p-[24px] pb-[18px] text-[#191b1d] rounded-[2px] border-[1px] border-solid border-[#eaedf5] bg-[#fefefe] w-[296px] h-[188px];
+}
+
+.top {
+  @apply items-center gap-[4px] mb-[34px] leading-[20px] flex text-[12px];
+}
+
+.dot {
+  @apply rounded-[100%] w-[1px] h-[1px] border-[#191b1d] border-solid border-[1px] mt-[2px];
+}
+
+.title {
+  @apply leading-[24px] text-[18px] font-semibold;
+}
+
+.bottom {
+  @apply flex justify-between text-[12px] leading-[20px] mt-auto;
+}
+
+.date {
+  @apply flex items-center gap-[4px];
+}
+
+.language {
+  @apply flex items-center gap-[4px];
+}
+
+.icon {
+  @apply absolute top-[6px] right-[10px] w-[56px] h-[56px];
+}
+
+.javascriptCard {
+  box-shadow: 6px 6px 0px #f4d438;
+}
+
+.javascriptCard:hover {
+  box-shadow: none;
+  background: linear-gradient(
+    47.11deg,
+    #fff06a 11.82%,
+    #ffd528 56.8%,
+    #ffc700 99.05%
+  );
+}
+
+.nodejsCard {
+  box-shadow: 6px 6px 0px #acda3b;
+}
+
+.nodejsCard:hover {
+  box-shadow: none;
+  background: linear-gradient(
+    51.01deg,
+    #77bb05 2.59%,
+    #a3d22f 46.03%,
+    #b4e246 98.52%
+  );
+}
+
+.reactCard {
+  box-shadow: 6px 6px 0px #01e5f3;
+}
+
+.reactCard:hover {
+  box-shadow: none;
+  background: linear-gradient(
+    51.26deg,
+    #00fff0 0%,
+    #00e5f7 50.78%,
+    #00c8ff 100%
+  );
+}
+
+.angularCard {
+  box-shadow: 6px 6px 0px #fe2551;
+}
+
+.angularCard:hover {
+  @apply text-white;
+
+  box-shadow: none;
+  background: linear-gradient(
+    40.95deg,
+    #cc002d 0%,
+    #ff2652 52.08%,
+    #ff6385 100%
+  );
+
+  svg {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(216deg)
+      brightness(102%) contrast(104%);
+  }
+
+  .dot {
+    border-color: white;
+  }
+}
+
+.iosCard {
+  box-shadow: 6px 6px 0px #d9d9d9;
+}
+
+.iosCard:hover {
+  @apply text-black;
+
+  box-shadow: none;
+  background: linear-gradient(
+    51.26deg,
+    #a1a1a1 0%,
+    #e0e0e0 50.78%,
+    #a0a0a0 100%
+  );
+
+  .dot {
+    border-color: black;
+  }
+}

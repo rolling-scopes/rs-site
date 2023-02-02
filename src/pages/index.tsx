@@ -1,3 +1,16 @@
+import {
+  CommunityT,
+  CourseCard,
+  DonationV1T,
+  DonationV2T,
+  MerchGeneralT,
+  PartnersT,
+  SocialMediaItemT,
+  SocialNetworkingListT,
+  SpeakersT,
+  AlumniCompaniesFetchT
+} from 'types';
+import { getFAQMarkdowns } from 'services';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
@@ -12,19 +25,7 @@ import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
 
-import { getFAQMarkdowns } from 'services';
-
-import {
-  CommunityT,
-  DonationV1T,
-  DonationV2T,
-  MerchGeneralT,
-  PartnersT,
-  SocialMediaItemT,
-  SocialNetworkingListT,
-  SpeakersT,
-  AlumniCompaniesFetchT
-} from 'types';
+import { School } from '@/components/School';
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -35,6 +36,7 @@ export default function Index({
   partners: initialPartners,
   merchGeneral: initialMerchGeneral,
   alumniCompanies: initialAlumniCompanies,
+  courses: initialCourses,
   preview,
   faqMarkdowns
 }) {
@@ -92,6 +94,13 @@ export default function Index({
       enabled: preview
     });
 
+  const { data: courses } = usePreviewSubscription<CourseCard[]>(
+    queries.courses,
+    {
+      initialData: initialCourses,
+      enabled: preview
+    }
+  );
 
   return (
     <>
@@ -106,6 +115,7 @@ export default function Index({
         <Accordion posts={faqMarkdowns || []} limit={5} />
       </FAQ>
       <AlumniCompanies companies={alumniCompanies[0].companies} />
+      <School courses={courses} limit={4} />
     </>
   );
 }
@@ -133,6 +143,9 @@ export async function getStaticProps({ preview = false }) {
   const merchGeneral = overlayDrafts(
     await getClient(preview).fetch(queries.merchGeneral)
   );
+  const courses = overlayDrafts(
+    await getClient(preview).fetch(queries.courses)
+  );
 
   const alumniCompanies: Array<AlumniCompaniesFetchT> = overlayDrafts(
     await getClient(preview).fetch(queries.alumniCompanies)
@@ -151,7 +164,8 @@ export async function getStaticProps({ preview = false }) {
       merchGeneral,
       alumniCompanies,
       preview,
-      faqMarkdowns
+      faqMarkdowns,
+      courses
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
