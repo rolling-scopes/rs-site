@@ -17,6 +17,7 @@ import speakers from './speakers';
 import community from './community';
 import partners from './partners';
 import merchGeneral from './merch-general';
+import courses from './course';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -34,6 +35,7 @@ export default createSchema({
     speakers,
     community,
     partners,
-    merchGeneral
+    merchGeneral,
+    courses
   ])
 });

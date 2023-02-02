@@ -1,0 +1,47 @@
+.section {
+  @apply flex justify-center;
+}
+
+.content {
+  @apply w-[1440px] flex justify-between px-[80px] pt-[136px] pb-[80px];
+}
+
+.info {
+  @apply w-[520px];
+}
+
+.edu {
+  @apply text-[12px] text-[#8E8D92] leading-[16px] uppercase font-medium mb-[36px];
+}
+
+.heading {
+  @apply text-[42px] text-[#191B1D] leading-[48px] font-bold mb-[24px];
+}
+
+.aboutWrapper {
+  @apply mb-[38px] flex flex-col gap-[10px];
+}
+
+.about {
+  @apply text-[#3B3D3F];
+}
+
+.button {
+  @apply after:content-[''] py-[12px] pl-[32px] pr-[64px] text-white font-semibold bg-[#191B1D] relative;
+}
+
+.button::after {
+  @apply translate-y-[-50%] rotate-45 absolute w-[8px] h-[8px] top-[50%] right-[38px] border-t-[2px] border-r-[2px] border-solid border-white;
+}
+
+.linkWrapper {
+  @apply flex justify-center mt-[32px];
+}
+
+.link {
+  @apply relative after:content-[''];
+}
+
+.link::after {
+  @apply translate-x-[-100%] absolute w-full bottom-[-4px] border-b-[1px] border-solid border-black;
+}

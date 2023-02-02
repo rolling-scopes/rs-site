@@ -1,3 +1,15 @@
+import {
+  CommunityT,
+  CourseCard,
+  DonationV1T,
+  DonationV2T,
+  MerchGeneralT,
+  PartnersT,
+  SocialMediaItemT,
+  SocialNetworkingListT,
+  SpeakersT
+} from 'types';
+import { getFAQMarkdowns } from 'services';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
@@ -10,19 +22,7 @@ import Partners from '@/components/Partners';
 import MerchGeneral from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
-
-import { getFAQMarkdowns } from 'services';
-
-import {
-  CommunityT,
-  DonationV1T,
-  DonationV2T,
-  MerchGeneralT,
-  PartnersT,
-  SocialMediaItemT,
-  SocialNetworkingListT,
-  SpeakersT
-} from 'types';
+import School from '@/components/School';
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -32,6 +32,7 @@ export default function Index({
   community: initialCommunity,
   partners: initialPartners,
   merchGeneral: initialMerchGeneral,
+  courses: initialCourses,
   preview,
   faqMarkdowns
 }) {
@@ -84,6 +85,14 @@ export default function Index({
     }
   );
 
+  const { data: courses } = usePreviewSubscription<CourseCard[]>(
+    queries.courses,
+    {
+      initialData: initialCourses,
+      enabled: preview
+    }
+  );
+
   return (
     <>
       <SocialMedia socialList={allSocialList[0].social_media_list} />
@@ -96,6 +105,7 @@ export default function Index({
       <FAQ link="/">
         <Accordion posts={faqMarkdowns || []} limit={5} />
       </FAQ>
+      <School courses={courses} limit={4} />
     </>
   );
 }
@@ -123,6 +133,9 @@ export async function getStaticProps({ preview = false }) {
   const merchGeneral = overlayDrafts(
     await getClient(preview).fetch(queries.merchGeneral)
   );
+  const courses = overlayDrafts(
+    await getClient(preview).fetch(queries.courses)
+  );
 
   const faqMarkdowns = await getFAQMarkdowns();
 
@@ -136,7 +149,8 @@ export async function getStaticProps({ preview = false }) {
       partners,
       merchGeneral,
       preview,
-      faqMarkdowns
+      faqMarkdowns,
+      courses
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
