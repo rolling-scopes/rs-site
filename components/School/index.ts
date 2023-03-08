@@ -1,3 +1,1 @@
-import { default as School } from './school';
-
-export default School;
+export { School } from './school';

@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import { FC, useMemo } from 'react';
-import styles from './styles.module.scss';
 import { CourseCard } from '@/types';
-import CourseList from './ui/CourseList/course-list';
+import styles from './styles.module.scss';
+import { CourseList } from './ui/CourseList/course-list';
 
 type Props = {
   courses: CourseCard[];
   limit: number;
 };
 
-const School: FC<Props> = ({ courses, limit }) => {
-  const sorted = useMemo(
+export const School: FC<Props> = ({ courses, limit }) => {
+  const sortedCourseList = useMemo(
     () =>
       [...courses]
         .sort(
@@ -19,7 +19,7 @@ const School: FC<Props> = ({ courses, limit }) => {
             new Date(b.starting_date).valueOf()
         )
         .slice(0, limit),
-    [courses]
+    [courses, limit]
   );
 
   return (
@@ -46,7 +46,7 @@ const School: FC<Props> = ({ courses, limit }) => {
         </div>
 
         <div className={styles.cards}>
-          <CourseList courses={sorted || []} />
+          <CourseList courses={sortedCourseList} />
 
           <div className={styles.linkWrapper}>
             <Link href="/" className={styles.link}>
@@ -58,5 +58,3 @@ const School: FC<Props> = ({ courses, limit }) => {
     </section>
   );
 };
-
-export default School;

@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import cn from 'classnames';
 import { CourseCard as CourseCardT } from '@/types';
-import styles from './styles.module.scss';
 import MicIcon from '@/public/images/icon/mic.svg';
 import CalendarIcon from '@/public/images/icon/calendar.svg';
+import styles from './styles.module.scss';
 import { cardData } from './card-data';
 
-const CourseCard = ({ course }: { course: CourseCardT }) => (
+export const CourseCard = ({ course }: { course: CourseCardT }) => (
   <li className={cn(styles.card, `${styles[cardData[course.type].class]}`)}>
     <div className={styles.top}>
       <div className={styles.mode}>{course.mode}</div>
@@ -29,5 +29,3 @@ const CourseCard = ({ course }: { course: CourseCardT }) => (
     </div>
   </li>
 );
-
-export default CourseCard;
