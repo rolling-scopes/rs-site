@@ -44,7 +44,3 @@ studio/.env.development
 .idea
 
 .vscode
-
-# Lock files
-package-lock.json
-yarn.lock
