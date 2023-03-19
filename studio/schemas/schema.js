@@ -18,6 +18,7 @@ import community from './community';
 import partners from './partners';
 import merchGeneral from './merch-general';
 import alumniCompanies from './alumni-companies';
+import picturesBlock from './pictures-block';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -36,6 +37,7 @@ export default createSchema({
     community,
     partners,
     merchGeneral,
-    alumniCompanies
+    alumniCompanies,
+    picturesBlock
   ])
 });

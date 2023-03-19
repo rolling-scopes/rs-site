@@ -1,0 +1,38 @@
+.block {
+  @apply m-auto w-[1440px] pt-[80px] px-[24px] pb-[70px] flex flex-col gap-8 justify-start items-start gap-[50px];
+}
+
+.title {
+  @apply font-inter ml-14 font-bold text-3xl;
+}
+
+.swiper {
+  @apply w-full;
+}
+
+.slide {
+  width: auto !important;
+  height: auto !important;
+
+  @apply text-center text-sm flex justify-center items-center bg-white;
+}
+
+.image {
+  @apply w-[750px] h-[468px] bg-amber-700;
+}
+
+.bulletsBlock {
+  position: relative !important;
+  top: 0 !important;
+  bottom: 0 !important;
+
+  @apply mt-10 flex justify-center items-center gap-4;
+}
+
+.bullet {
+  @apply inline-block w-2 h-2 rounded-full cursor-pointer bg-[#C0C3CE];
+
+  &_active {
+    @apply cursor-default bg-[#191B1D];
+  }
+}
