@@ -92,8 +92,7 @@ export default function Index({
       enabled: preview
     });
 
-
-    return (
+  return (
     <>
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
