@@ -39,7 +39,7 @@ export default function Index({
   faqMarkdowns
 }) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
-    queries.donationV1,
+    queries.merchGeneral,
     {
       initialData: initialMerchGeneral,
       enabled: preview
@@ -92,7 +92,8 @@ export default function Index({
       enabled: preview
     });
 
-  return (
+
+    return (
     <>
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
