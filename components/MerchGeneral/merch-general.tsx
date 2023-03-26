@@ -10,7 +10,7 @@ type Props = {
 export default function MerchGeneral({ merch }: Props) {
   // @ts-ignore
   const { title, description, imagesList, titleLink, link } = merch || {};
-  const picList = imagesList.map(item => (
+  const picList = imagesList?.map(item => (
     <div
       className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100"
       key={item.caption}
