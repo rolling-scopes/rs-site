@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import styles from './styles.module.scss';
 
 type Props = {
   link: string;
+  children: React.ReactNode;
 };
 
 const FAQ: FC<Props> = ({ children, link }) => (

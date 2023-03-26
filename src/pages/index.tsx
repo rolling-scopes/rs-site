@@ -39,7 +39,7 @@ export default function Index({
   faqMarkdowns
 }) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
-    queries.donationV1,
+    queries.merchGeneral,
     {
       initialData: initialMerchGeneral,
       enabled: preview
