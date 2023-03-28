@@ -35,14 +35,13 @@ export const MerchGeneral: FC<MerchGeneralProps> = ({
 
                       return (
                         <div
-                          className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100"
+                          className="h-64 w-44 relative overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100"
                           key={caption}
                         >
                           <Image
                             src={urlForImage(item).url()}
                             alt="donation"
-                            width="235"
-                            height="100"
+                            fill
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
