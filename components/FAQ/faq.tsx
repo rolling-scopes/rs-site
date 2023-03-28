@@ -2,12 +2,12 @@ import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 import styles from './styles.module.scss';
 
-type Props = {
+type FaqProps = {
   link: string;
   children: ReactNode;
 };
 
-const FAQ: FC<Props> = ({ children, link }) => (
+export const FAQ: FC<FaqProps> = ({ children, link }) => (
   <section className={styles.wrapper}>
     <div className={styles.faq}>
       <h2 className={styles.header}>Частые вопросы и ответы</h2>
@@ -18,5 +18,3 @@ const FAQ: FC<Props> = ({ children, link }) => (
     </div>
   </section>
 );
-
-export default FAQ;
