@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "studio:dev": "npm --prefix studio run start",
+    "studio:dev": "npm --prefix studio run dev",
     "studio:deploy": "npx vercel env pull && npm --prefix studio run deploy",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
