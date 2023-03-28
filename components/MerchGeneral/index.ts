@@ -1,3 +1,1 @@
-import MerchGeneral from './merch-general';
-
-export default MerchGeneral;
+export { MerchGeneral } from './merch-general';

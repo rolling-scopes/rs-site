@@ -18,7 +18,15 @@ export type SpeakersT = Base & Link;
 
 export type DonationV1T = Base & Link;
 
-export type MerchGeneralT = Base & Link;
+interface imagesListItem {
+  caption: string;
+  attribution: string;
+  url: string;
+}
+
+export interface MerchGeneralT extends Base, Link {
+  imagesList: Array<imagesListItem>;
+}
 
 export type PartnersT = {
   title: string;
