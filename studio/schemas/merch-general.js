@@ -26,6 +26,43 @@ export default {
       title: 'Url',
       type: 'url',
       validation: Rule => Rule.required()
+    },
+    {
+      name: 'imagesList',
+      title: 'Title images',
+      type: 'array',
+      of: [
+        {
+          title: 'Poster',
+          name: 'poster',
+          type: 'image',
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption'
+            },
+            {
+              name: 'attribution',
+              type: 'string',
+              title: 'Attribution'
+            }
+          ]
+        },
+
+        {
+          title: 'URL',
+          name: 'urlObject',
+          type: 'object',
+          fields: [
+            {
+              title: 'URL',
+              name: 'urlField',
+              type: 'url'
+            }
+          ]
+        }
+      ]
     }
   ]
 };

@@ -13,9 +13,11 @@ const AccordionItem: FC<AccordionItemType> = ({ title, content }) => {
   const itemStyles = cn(styles.accordionItem, {
     [styles.withPadding]: isOpen
   });
+
   const titleIconStyles = cn(styles.plus, {
     [styles.rotatePlus]: isOpen
   });
+
   const contentStyles = isOpen
     ? { height: ref.current.scrollHeight }
     : { height: 0 };

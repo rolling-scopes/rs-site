@@ -7,7 +7,7 @@ import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
 import Partners from '@/components/Partners';
-import MerchGeneral from '@/components/MerchGeneral';
+import { MerchGeneral } from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
@@ -39,7 +39,7 @@ export default function Index({
   faqMarkdowns
 }) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
-    queries.donationV1,
+    queries.merchGeneral,
     {
       initialData: initialMerchGeneral,
       enabled: preview

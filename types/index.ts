@@ -18,7 +18,15 @@ export type SpeakersT = Base & Link;
 
 export type DonationV1T = Base & Link;
 
-export type MerchGeneralT = Base & Link;
+interface ImagesListItem {
+  caption: string;
+  attribution: string;
+  url: string;
+}
+
+export interface MerchGeneralT extends Base, Link {
+  imagesList: Array<ImagesListItem>;
+}
 
 export type PartnersT = {
   title: string;
@@ -38,12 +46,6 @@ export interface CommunityT extends Base {
 }
 
 export type AccordionItem = {
-  content: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, string>
-  >;
-  title: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, string>
-  >;
+  content: MDXRemoteSerializeResult;
+  title: MDXRemoteSerializeResult;
 };

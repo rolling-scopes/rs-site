@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "studio:dev": "npm --prefix studio run start",
+    "studio:dev": "npm --prefix studio run dev",
     "studio:deploy": "npx vercel env pull && npm --prefix studio run deploy",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
@@ -53,7 +53,7 @@
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
-    "tailwindcss": "^3.1.7"
+    "tailwindcss": "^3.2.7"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
