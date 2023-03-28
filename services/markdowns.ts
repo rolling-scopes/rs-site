@@ -2,7 +2,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import fs from 'fs/promises';
 import path from 'path';
 import { Paths } from '@/common/enums/paths';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 type Title = { title: Buffer };
 
