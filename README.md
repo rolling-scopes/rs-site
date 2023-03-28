@@ -1,9 +1,5 @@
 ## Step 1. Set up the environment
 
-Use the Deploy Button below, you'll deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) as well as connect it to your Sanity dataset using [the Sanity Vercel Integration][integration].
-
-[![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
-
 [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that Vercel created for you and from the root directory of your local checkout.
 Then link your clone to Vercel:
 
