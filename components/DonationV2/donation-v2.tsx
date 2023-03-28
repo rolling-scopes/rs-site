@@ -20,7 +20,7 @@ export default function DonationV2({ donation }: Props) {
 
         <div className={styles.content}>
           <div className={styles.image}>
-            <Image src={imageUrl} layout="fill" alt="donation" />
+            <Image src={imageUrl} fill alt="donation" />
           </div>
 
           <div className={styles.right}>

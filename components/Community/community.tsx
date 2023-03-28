@@ -17,7 +17,7 @@ export default function Community({ community }: Props) {
       <div className={styles.block}>
         <div className={styles.content}>
           <div className={styles.image}>
-            <Image src={imageUrl} layout="fill" alt="community" />
+            <Image src={imageUrl} fill alt="community" />
           </div>
 
           <div className={styles.right}>
