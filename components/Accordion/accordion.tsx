@@ -13,8 +13,8 @@ const Accordion: FC<Props> = ({ posts, limit }) => {
 
   return (
     <ul className={styles.accordion}>
-      {slicedPosts.map((post, idx) => (
-        <AccordionItem title={post.title} content={post.content} key={idx} />
+      {slicedPosts.map((post, index) => (
+        <AccordionItem title={post.title} content={post.content} key={index} />
       ))}
     </ul>
   );

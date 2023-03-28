@@ -46,12 +46,6 @@ export interface CommunityT extends Base {
 }
 
 export type AccordionItem = {
-  content: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, string>
-  >;
-  title: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, string>
-  >;
+  content: MDXRemoteSerializeResult;
+  title: MDXRemoteSerializeResult;
 };
