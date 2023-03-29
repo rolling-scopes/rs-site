@@ -5,6 +5,6 @@
 /* purgecss end ignore */
 @tailwind utilities;
 @font-face {
-    font-family: "Inter var";
-    src: url("../public/fonts/Inter-Regular.ttf");
+  font-family: 'Inter var';
+  src: url('../public/fonts/Inter-Regular.ttf');
 }
