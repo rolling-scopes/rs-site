@@ -30,7 +30,6 @@ module.exports = {
         cyan: '#79FFE1',
         'title-color-1': '#1A1A1A',
         'night-900': '#191B1D'
-
       },
       spacing: {
         28: '7rem'
