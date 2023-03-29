@@ -12,7 +12,7 @@ export const MerchGeneral: FC<MerchGeneralProps> = ({
   merch: { description, link, title, titleLink, imagesList }
 }) => {
   const getImagesList = images =>
-    images.map(image => {
+    images?.map(image => {
       const { caption } = image;
       return (
         <div
