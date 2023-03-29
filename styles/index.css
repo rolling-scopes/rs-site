@@ -1,5 +1,10 @@
 /* purgecss start ignore */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @tailwind base;
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+@font-face {
+    font-family: "Inter var";
+    src: url("../public/fonts/Inter-Regular.ttf");
+}
