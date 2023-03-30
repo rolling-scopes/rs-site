@@ -9,7 +9,7 @@ type MerchGeneralProps = {
 };
 
 export const MerchGeneral: FC<MerchGeneralProps> = ({
-  merch: { description, link, title, titleLink, imagesList }
+  merch: { description, title, titleLink, imagesList }
 }) => {
   const getImagesList = images =>
     images?.map(image => {
@@ -70,7 +70,7 @@ export const MerchGeneral: FC<MerchGeneralProps> = ({
               </div>
             </div>
             <Link
-              href={link}
+              href={"/merch/"}
               className="inline-block rounded-md border border-transparent bg-night-900 py-3 px-8 text-center font-medium text-white hover:bg-zinc-400"
             >
               {titleLink}

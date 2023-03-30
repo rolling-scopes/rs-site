@@ -1,4 +1,1 @@
-
-
-
-export const Catalog = () => (<h1>Merch catalog</h1>)
+export const Catalog = () => <h1>Merch catalog</h1>;
