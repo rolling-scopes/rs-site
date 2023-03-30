@@ -70,7 +70,7 @@ export const MerchGeneral: FC<MerchGeneralProps> = ({
               </div>
             </div>
             <Link
-              href={"/merch/"}
+              href={'/merch/'}
               className="inline-block rounded-md border border-transparent bg-night-900 py-3 px-8 text-center font-medium text-white hover:bg-zinc-400"
             >
               {titleLink}
