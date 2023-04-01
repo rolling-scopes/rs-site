@@ -11,6 +11,7 @@ import { MerchGeneral } from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
+import { Layout } from '@/components/Layout';
 
 import { getFAQMarkdowns } from 'services';
 
@@ -93,7 +94,7 @@ export default function Index({
     });
 
   return (
-    <>
+    <Layout>
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
@@ -105,7 +106,7 @@ export default function Index({
         <Accordion posts={faqMarkdowns || []} limit={5} />
       </FAQ>
       <AlumniCompanies companies={alumniCompanies[0].companies} />
-    </>
+    </Layout>
   );
 }
 

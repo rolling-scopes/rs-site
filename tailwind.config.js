@@ -32,6 +32,7 @@ module.exports = {
         'title-color-1': '#1A1A1A'
       },
       spacing: {
+        18: '4.5rem',
         28: '7rem'
       },
       letterSpacing: {
