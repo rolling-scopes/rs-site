@@ -7,8 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "studio:dev": "npm --prefix studio run dev",
-    "studio:deploy": "npx vercel env pull && npm --prefix studio run deploy",
+    "studio:dev": "pnpm --dir studio dev",
+    "studio:deploy": "pnpm dlx vercel env pull && pnpm --dir studio deploy",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "lint": "next lint",
@@ -57,8 +57,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npm run lint:fix",
-      "npm run format:fix"
+      "pnpm lint:fix",
+      "pnpm format:fix"
     ]
   }
 }

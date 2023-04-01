@@ -1,3 +1,45 @@
+# Rolling Scopes Site
+
+## Set up the environment
+
+Make sure you have the latest [node](https://nodejs.org/en)
+
+1. Install [`pnpm`](https://pnpm.io/installation)
+
+1. Install dependencies:
+
+   ```bash
+   pnpm install
+   pnpm --dir studio install
+   ```
+
+1. <details>
+   <summary>DRAFT: setup sanity env variables</summary>
+
+   > Copy [`.env.local.example`](./.env.local.example) to `.env.local`:
+   >
+   > ```bash
+   > cp .env.local.example .env.local
+   > ```
+   >
+   > Then set these variables in `.env.local`:
+   >
+   > - `NEXT_PUBLIC_SANITY_PROJECT_ID` should be the "Project ID" from Sanity project dashboard .
+   > - `NEXT_PUBLIC_SANITY_DATASET` should be the desired dataset from Sanity project (**`develop`**).
+   > - `SANITY_API_READ_TOKEN` create an API token with `read-only` permissions on https://manage.sanity.io/:
+   >   - Go to **API** and the **Tokens** section at the bottom, launch its **Add API token** button.
+   >   - Name it `SANITY_API_READ_TOKEN`, set **Permissions** to `Viewer`.
+   >   - Hit **Save** and you can copy/paste the token.
+
+   </details>
+
+---
+
+<details>
+<summary>Old next.js cms-sanity example README.md</summary>
+
+https://github.com/vercel/next.js/blob/v13.2.0/examples/cms-sanity/README.md
+
 ## Step 1. Set up the environment
 
 [Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that Vercel created for you and from the root directory of your local checkout.
@@ -339,3 +381,5 @@ See [CONTRIBUTING](https://github.com/rolling-scopes/rsschool-app/blob/master/CO
 ## License
 
 [Mozilla Public License 2.0](https://github.com/rolling-scopes/rsschool-app/blob/master/LICENSE)
+
+</details>

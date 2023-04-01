@@ -4,3 +4,7 @@ coverage
 
 # Ignore all HTML files:
 *.html
+
+yarn.lock
+pnpm-lock.yaml
+package-lock.json
