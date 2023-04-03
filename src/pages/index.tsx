@@ -25,6 +25,7 @@ import {
   SpeakersT,
   AlumniCompaniesFetchT
 } from 'types';
+import Header from '@/components/Header/header';
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -94,6 +95,7 @@ export default function Index({
 
   return (
     <>
+      <Header />
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
