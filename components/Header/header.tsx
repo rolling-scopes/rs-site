@@ -58,11 +58,7 @@ export default function Header() {
           </ul>
         </nav>
         <div className="flex justify-center">
-          <svg
-            width="24"
-            height="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
             <path
               fill="#1D1B24"
               clip-rule="evenodd"
