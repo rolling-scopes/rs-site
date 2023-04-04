@@ -95,7 +95,7 @@ export default function Index({
 
   return (
     <>
-      <Header />
+      <Header logo="circle" />
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
