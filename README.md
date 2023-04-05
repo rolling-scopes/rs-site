@@ -1,8 +1,8 @@
 # Rolling Scopes Site
 
-## Set up the environment
+## Setting up environment
 
-Make sure you have the latest [node](https://nodejs.org/en)
+1. Make sure you have the latest [node](https://nodejs.org/en)
 
 1. Install [`pnpm`](https://pnpm.io/installation)
 
@@ -33,10 +33,32 @@ Make sure you have the latest [node](https://nodejs.org/en)
 
    </details>
 
+## Running locally
+
+**Running website:**
+
+```bash
+pnpm dev
+```
+
+Site should be up and running on [http://localhost:3000](http://localhost:3000)
+
+**Running studio:**
+
+```bash
+pnpm studio:dev
+```
+
+Studio should be up and running on [http://localhost:3333](http://localhost:3333)
+
+## Deployment
+
+TODO.
+
 ---
 
 <details>
-<summary>Old next.js cms-sanity example README.md</summary>
+<summary><strong>Old next.js cms-sanity example README.md</strong></summary>
 
 https://github.com/vercel/next.js/blob/v13.2.0/examples/cms-sanity/README.md
 
