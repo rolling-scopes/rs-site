@@ -1,6 +1,6 @@
 # Rolling Scopes Site
 
-## Setting up environment
+## Setting up Next app
 
 1. Make sure you have the latest [node](https://nodejs.org/en)
 
@@ -10,7 +10,6 @@
 
    ```bash
    pnpm install
-   pnpm --dir studio install
    ```
 
 1. <details>
@@ -43,10 +42,17 @@ pnpm dev
 
 Site should be up and running on [http://localhost:3000](http://localhost:3000)
 
-**Running studio:**
+## Using Sanity Studio
+
+[Sanity Studio](https://github.com/sanity-io/sanity) is customizable UI for sanity CMS.
+Using it requires editor access to the rs-site content.
+
+**NOTE:** sanity is not compatible with PNPM at this moment
 
 ```bash
-pnpm studio:dev
+cd studio
+npm install
+npm run dev
 ```
 
 Studio should be up and running on [http://localhost:3333](http://localhost:3333)
