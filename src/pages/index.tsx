@@ -7,7 +7,7 @@ import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
 import Partners from '@/components/Partners';
-import MerchGeneral from '@/components/MerchGeneral';
+import { MerchGeneral } from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
@@ -27,6 +27,7 @@ import {
   AlumniCompaniesFetchT,
   GalleryBlockFetchT
 } from 'types';
+import Header from '@/components/Header/header';
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -42,7 +43,7 @@ export default function Index({
   faqMarkdowns
 }) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
-    queries.donationV1,
+    queries.merchGeneral,
     {
       initialData: initialMerchGeneral,
       enabled: preview
@@ -89,7 +90,6 @@ export default function Index({
       enabled: preview
     }
   );
-
   const { data: alumniCompanies } =
     usePreviewSubscription<AlumniCompaniesFetchT>(queries.alumniCompanies, {
       initialData: initialAlumniCompanies,
@@ -103,6 +103,7 @@ export default function Index({
 
   return (
     <>
+      <Header logo="circle" />
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
