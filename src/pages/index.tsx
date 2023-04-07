@@ -27,7 +27,7 @@ import {
   SpeakersT,
   AlumniCompaniesFetchT,
   GalleryBlockFetchT,
-    CourseCard
+  CourseCard
 } from 'types';
 import Header from '@/components/Header/header';
 

@@ -6,7 +6,6 @@ import { urlForImage } from '@/lib/sanity';
 import { AlumniCompaniesT, AlumniCompaniesP } from '@/types';
 import { onUpdateCompaniesList } from './utils';
 
-
 import styles from './styles.module.scss';
 
 const AlumniCompanies: React.FC<AlumniCompaniesP> = props => {
