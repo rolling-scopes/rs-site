@@ -12,6 +12,7 @@ import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
 import GalleryBlock from '@/components/GalleryBlock';
+import { School } from '@/components/School';
 
 import { getFAQMarkdowns } from 'services';
 
@@ -25,7 +26,8 @@ import {
   SocialNetworkingListT,
   SpeakersT,
   AlumniCompaniesFetchT,
-  GalleryBlockFetchT
+  GalleryBlockFetchT,
+  CourseCard
 } from 'types';
 import Header from '@/components/Header/header';
 
@@ -39,6 +41,7 @@ export default function Index({
   merchGeneral: initialMerchGeneral,
   alumniCompanies: initialAlumniCompanies,
   galleryBlock: initialGalleryBlock,
+  courses: initialCourses,
   preview,
   faqMarkdowns
 }) {
@@ -100,6 +103,13 @@ export default function Index({
     initialData: initialGalleryBlock,
     enabled: preview
   });
+  const { data: courses } = usePreviewSubscription<CourseCard[]>(
+    queries.courses,
+    {
+      initialData: initialCourses,
+      enabled: preview
+    }
+  );
 
   return (
     <>
@@ -116,6 +126,7 @@ export default function Index({
       </FAQ>
       <AlumniCompanies companies={alumniCompanies[0].companies} />
       <GalleryBlock data={galleryBlock[0]} />
+      <School courses={courses} limit={4} />
     </>
   );
 }
@@ -143,6 +154,9 @@ export async function getStaticProps({ preview = false }) {
   const merchGeneral = overlayDrafts(
     await getClient(preview).fetch(queries.merchGeneral)
   );
+  const courses = overlayDrafts(
+    await getClient(preview).fetch(queries.courses)
+  );
 
   const alumniCompanies: Array<AlumniCompaniesFetchT> = overlayDrafts(
     await getClient(preview).fetch(queries.alumniCompanies)
@@ -166,7 +180,8 @@ export async function getStaticProps({ preview = false }) {
       alumniCompanies,
       galleryBlock,
       preview,
-      faqMarkdowns
+      faqMarkdowns,
+      courses
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60

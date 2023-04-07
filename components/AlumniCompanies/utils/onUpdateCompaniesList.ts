@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { AlumniCompaniesT } from '../../../types';
+import { AlumniCompaniesT } from '@/types';
 
 type OnUpdateCompaniesListP = {
   arrayCompanies: AlumniCompaniesT[];

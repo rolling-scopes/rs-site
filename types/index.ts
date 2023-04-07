@@ -3,6 +3,8 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
 
 export * from './social-media';
 export * from './alumni-companies';
+export * from './accordion-item';
+export * from './course-card';
 export * from './gallery-block';
 
 type Link = {

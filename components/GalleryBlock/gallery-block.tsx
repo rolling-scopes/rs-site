@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { urlForImage } from '@/lib/sanity';
 
-import { GalleryBlockP } from '../../types';
+import { GalleryBlockP } from '@/types';
 
 import styles from './styles.module.scss';
 import 'swiper/css';
