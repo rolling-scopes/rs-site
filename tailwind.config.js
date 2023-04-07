@@ -34,6 +34,7 @@ module.exports = {
         'night-900': '#191B1D'
       },
       spacing: {
+        18: '4.5rem',
         28: '7rem'
       },
       letterSpacing: {
