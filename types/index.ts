@@ -29,6 +29,11 @@ interface ImagesListItem {
 
 export interface MerchGeneralT extends Base, Link {
   imagesList: Array<ImagesListItem>;
+  general_info: {
+    title: string;
+    description: string;
+    titleLink: string;
+  };
 }
 
 export type PartnersT = {
