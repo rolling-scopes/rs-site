@@ -12,7 +12,7 @@ import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
 import GalleryBlock from '@/components/GalleryBlock';
 import { School } from '@/components/School';
-import {MerchGeneral} from "@/components/MerchGeneral/merch-general";
+import { MerchGeneral } from '@/components/MerchGeneral/merch-general';
 import { getFAQMarkdowns } from 'services';
 
 import {
