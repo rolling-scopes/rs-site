@@ -7,13 +7,12 @@ import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
 import Partners from '@/components/Partners';
-import { MerchGeneral } from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
 import GalleryBlock from '@/components/GalleryBlock';
 import { School } from '@/components/School';
-
+import {MerchGeneral} from "@/components/MerchGeneral/merch-general";
 import { getFAQMarkdowns } from 'services';
 
 import {
@@ -110,7 +109,6 @@ export default function Index({
       enabled: preview
     }
   );
-
   return (
     <>
       <Header logo="circle" />

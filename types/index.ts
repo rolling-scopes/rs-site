@@ -1,5 +1,5 @@
-import { SanityImageObject } from '@sanity/image-url/lib/types/types';
-import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
+import {SanityImageObject} from '@sanity/image-url/lib/types/types';
+import {MDXRemoteSerializeResult} from 'next-mdx-remote/dist';
 
 export * from './social-media';
 export * from './alumni-companies';
@@ -8,13 +8,13 @@ export * from './course-card';
 export * from './gallery-block';
 
 type Link = {
-  titleLink: string;
-  link: string;
+    titleLink: string;
+    link: string;
 };
 
 type Base = {
-  title: string;
-  description: string;
+    title: string;
+    description: string;
 };
 
 export type SpeakersT = Base & Link;
@@ -22,33 +22,38 @@ export type SpeakersT = Base & Link;
 export type DonationV1T = Base & Link;
 
 interface ImagesListItem {
-  caption: string;
-  attribution: string;
-  url: string;
+    caption: string;
+    attribution: string;
+    url: string;
 }
 
 export interface MerchGeneralT extends Base, Link {
-  imagesList: Array<ImagesListItem>;
+    imagesList: Array<ImagesListItem>;
+    general_info: {
+        title: string;
+        description: string;
+        titleLink: string;
+    }
 }
 
 export type PartnersT = {
-  title: string;
-  companies: {
-    name: string;
-    link: string;
-    picture: SanityImageObject;
-  }[];
+    title: string;
+    companies: {
+        name: string;
+        link: string;
+        picture: SanityImageObject;
+    }[];
 };
 
 export interface DonationV2T extends Base, Link {
-  picture: SanityImageObject;
+    picture: SanityImageObject;
 }
 
 export interface CommunityT extends Base {
-  picture: SanityImageObject;
+    picture: SanityImageObject;
 }
 
 export type AccordionItem = {
-  content: MDXRemoteSerializeResult;
-  title: MDXRemoteSerializeResult;
+    content: MDXRemoteSerializeResult;
+    title: MDXRemoteSerializeResult;
 };
