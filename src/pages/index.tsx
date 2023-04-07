@@ -1,16 +1,3 @@
-import {
-  CommunityT,
-  CourseCard,
-  DonationV1T,
-  DonationV2T,
-  MerchGeneralT,
-  PartnersT,
-  SocialMediaItemT,
-  SocialNetworkingListT,
-  SpeakersT,
-  AlumniCompaniesFetchT
-} from 'types';
-import { getFAQMarkdowns } from 'services';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
@@ -20,12 +7,29 @@ import DonationV1 from '@/components/DonationV1';
 import Speakers from '@/components/Speakers';
 import Community from '@/components/Community';
 import Partners from '@/components/Partners';
-import MerchGeneral from '@/components/MerchGeneral';
+import { MerchGeneral } from '@/components/MerchGeneral';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
 import AlumniCompanies from '@/components/AlumniCompanies';
-
+import GalleryBlock from '@/components/GalleryBlock';
 import { School } from '@/components/School';
+
+import { getFAQMarkdowns } from 'services';
+
+import {
+  CommunityT,
+  DonationV1T,
+  DonationV2T,
+  MerchGeneralT,
+  PartnersT,
+  SocialMediaItemT,
+  SocialNetworkingListT,
+  SpeakersT,
+  AlumniCompaniesFetchT,
+  GalleryBlockFetchT,
+    CourseCard
+} from 'types';
+import Header from '@/components/Header/header';
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -36,12 +40,13 @@ export default function Index({
   partners: initialPartners,
   merchGeneral: initialMerchGeneral,
   alumniCompanies: initialAlumniCompanies,
+  galleryBlock: initialGalleryBlock,
   courses: initialCourses,
   preview,
   faqMarkdowns
 }) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
-    queries.donationV1,
+    queries.merchGeneral,
     {
       initialData: initialMerchGeneral,
       enabled: preview
@@ -94,6 +99,10 @@ export default function Index({
       enabled: preview
     });
 
+  const { data: galleryBlock } = usePreviewSubscription(queries.galleryBlock, {
+    initialData: initialGalleryBlock,
+    enabled: preview
+  });
   const { data: courses } = usePreviewSubscription<CourseCard[]>(
     queries.courses,
     {
@@ -104,6 +113,7 @@ export default function Index({
 
   return (
     <>
+      <Header logo="circle" />
       <SocialMedia socialList={allSocialList[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
@@ -115,6 +125,7 @@ export default function Index({
         <Accordion posts={faqMarkdowns || []} limit={5} />
       </FAQ>
       <AlumniCompanies companies={alumniCompanies[0].companies} />
+      <GalleryBlock data={galleryBlock[0]} />
       <School courses={courses} limit={4} />
     </>
   );
@@ -151,6 +162,10 @@ export async function getStaticProps({ preview = false }) {
     await getClient(preview).fetch(queries.alumniCompanies)
   );
 
+  const galleryBlock: Array<GalleryBlockFetchT> = overlayDrafts(
+    await getClient(preview).fetch(queries.galleryBlock)
+  );
+
   const faqMarkdowns = await getFAQMarkdowns();
 
   return {
@@ -163,6 +178,7 @@ export async function getStaticProps({ preview = false }) {
       partners,
       merchGeneral,
       alumniCompanies,
+      galleryBlock,
       preview,
       faqMarkdowns,
       courses

@@ -1,8 +1,8 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import fs from 'fs/promises';
 import path from 'path';
-import { AccordionItem } from 'types';
 import { Paths } from '@/common/enums/paths';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 type Title = { title: Buffer };
 
@@ -22,7 +22,10 @@ async function getFileSource(folderPath: string, filename: string) {
   return { [nameOfFile]: source } as PostSourceFile;
 }
 
-async function transformPostData(post: PostData): Promise<AccordionItem> {
+async function transformPostData(post: PostData): Promise<{
+  title: MDXRemoteSerializeResult;
+  content: MDXRemoteSerializeResult;
+}> {
   const postData: Data = { ...post[0], ...post[1] };
   const serializedTitle = await serialize(postData?.title?.toString());
   const serializedContent = await serialize(postData?.content?.toString());
@@ -41,9 +44,7 @@ async function getPostFromFolderName(folderName: string) {
     getFileSource(folderPath, filename)
   );
   const postData: PostData = await Promise.all(getFileSourcePromises);
-  const transformed = await transformPostData(postData);
-
-  return transformed;
+  return transformPostData(postData);
 }
 
 export async function getFAQMarkdowns() {
@@ -53,7 +54,5 @@ export async function getFAQMarkdowns() {
   const getPostFromFolderNamePromises = folderNames.map(folderName =>
     getPostFromFolderName(folderName)
   );
-  const posts = await Promise.all(getPostFromFolderNamePromises);
-
-  return posts;
+  return Promise.all(getPostFromFolderNamePromises);
 }

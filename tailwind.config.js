@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -25,13 +27,14 @@ module.exports = {
       colors: {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
-        'accent-3': '#191B1D',
         'accent-7': '#333',
         success: '#0070f3',
         cyan: '#79FFE1',
-        'title-color-1': '#1A1A1A'
+        'title-color-1': '#1A1A1A',
+        'night-900': '#191B1D'
       },
       spacing: {
+        18: '4.5rem',
         28: '7rem'
       },
       letterSpacing: {
@@ -39,6 +42,9 @@ module.exports = {
       },
       lineHeight: {
         tight: 1.2
+      },
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       },
       fontSize: {
         '5xl': '2.5rem',

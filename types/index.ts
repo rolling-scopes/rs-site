@@ -1,9 +1,11 @@
 import { SanityImageObject } from '@sanity/image-url/lib/types/types';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote/dist';
 
 export * from './social-media';
 export * from './alumni-companies';
 export * from './accordion-item';
 export * from './course-card';
+export * from './gallery-block';
 
 type Link = {
   titleLink: string;
@@ -19,7 +21,15 @@ export type SpeakersT = Base & Link;
 
 export type DonationV1T = Base & Link;
 
-export type MerchGeneralT = Base & Link;
+interface ImagesListItem {
+  caption: string;
+  attribution: string;
+  url: string;
+}
+
+export interface MerchGeneralT extends Base, Link {
+  imagesList: Array<ImagesListItem>;
+}
 
 export type PartnersT = {
   title: string;
@@ -37,3 +47,8 @@ export interface DonationV2T extends Base, Link {
 export interface CommunityT extends Base {
   picture: SanityImageObject;
 }
+
+export type AccordionItem = {
+  content: MDXRemoteSerializeResult;
+  title: MDXRemoteSerializeResult;
+};

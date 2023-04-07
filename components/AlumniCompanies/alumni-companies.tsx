@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import { urlForImage } from '@/lib/sanity';
+import { AlumniCompaniesT, AlumniCompaniesP } from '@/types';
 import { onUpdateCompaniesList } from './utils';
 
-import { AlumniCompaniesT, AlumniCompaniesP } from '../../types';
 
 import styles from './styles.module.scss';
 
