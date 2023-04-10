@@ -4,12 +4,10 @@
 
 1. Make sure you have the latest [node](https://nodejs.org/en)
 
-1. Install [`pnpm`](https://pnpm.io/installation)
-
 1. Install dependencies:
 
    ```bash
-   pnpm install
+   npm install
    ```
 
 1. <details>
@@ -37,7 +35,7 @@
 **Running website:**
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Site should be up and running on [http://localhost:3000](http://localhost:3000)
@@ -46,8 +44,6 @@ Site should be up and running on [http://localhost:3000](http://localhost:3000)
 
 [Sanity Studio](https://github.com/sanity-io/sanity) is customizable UI for sanity CMS.
 Using it requires editor access to the rs-site content.
-
-**NOTE:** sanity is not compatible with PNPM at this moment
 
 ```bash
 cd studio
