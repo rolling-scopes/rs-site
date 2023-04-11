@@ -23,12 +23,19 @@ export type DonationV1T = Base & Link;
 
 interface ImagesListItem {
   caption: string;
+  description: string;
+  url: string;
+}
+
+interface PosterListItem {
+  caption: string;
   attribution: string;
   url: string;
 }
 
 export interface MerchGeneralT extends Base, Link {
-  imagesList: Array<ImagesListItem>;
+  howItWorks: Array<ImagesListItem>;
+  imagesList: Array<PosterListItem>;
   general_info: {
     title: string;
     description: string;

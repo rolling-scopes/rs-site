@@ -90,6 +90,35 @@ export const merchGeneral = defineType({
           validation: Rule => Rule.required()
         }
       ]
-    })
+    }),
+    {
+      title: 'How it Works',
+      name: 'howItWorks',
+      type: 'array',
+      of: [
+        {
+          title: 'Image',
+          name: 'poster',
+          type: 'image',
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Caption'
+            },
+            {
+              name: 'description',
+              type: 'string',
+              title: 'Description'
+            },
+            {
+              title: 'URL',
+              name: 'url',
+              type: 'url'
+            }
+          ]
+        }
+      ]
+    }
   ]
 });

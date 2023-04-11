@@ -18,7 +18,7 @@ export default function Index({ preview, merchGeneral: initialMerchGeneral }) {
   return (
     <>
       <GeneralInfo merch={allMerchGeneral[0]?.general_info} />
-      <HowItWorks />
+      <HowItWorks howItWorks={allMerchGeneral[0]?.howItWorks} />
       <Catalog />
     </>
   );
