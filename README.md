@@ -1,19 +1,22 @@
 # Rolling Scopes Site
 
-## Setting up Next app
+## Setting up environment
 
 1. Make sure you have the latest [node](https://nodejs.org/en)
+
+1. Install [`pnpm`](https://pnpm.io/installation)
 
 1. Install dependencies:
 
    ```bash
-   npm install
+   pnpm install
+   pnpm --dir studio install
    ```
 
 1. <details>
    <summary>DRAFT: setup sanity env variables</summary>
 
-   > Copy [`.env.local.example`] to `.env.local`:
+   > Copy [`.env.local.example`](./.env.local.example) to `.env.local`:
    >
    > ```bash
    > cp .env.local.example .env.local
@@ -30,46 +33,27 @@
 
    </details>
 
-### Running locally
+## Running locally
 
 **Running website:**
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Site should be up and running on [http://localhost:3000](http://localhost:3000)
 
-### Deployment
-
-TODO.
-
-## Setting up Sanity Studio
-
-[Sanity Studio](https://github.com/sanity-io/sanity) is customizable UI for sanity CMS.
-Using it requires editor access to the rs-site content.
+**Running studio:**
 
 ```bash
-cd studio
-npm install
-npm run dev
+pnpm studio:dev
 ```
 
 Studio should be up and running on [http://localhost:3333](http://localhost:3333)
 
-### Deployment
-
-Sanity studio is deployed separately from the main website.
+## Deployment
 
 TODO.
-
-## Contributing
-
-See [CONTRIBUTING](https://github.com/rolling-scopes/rsschool-app/blob/master/CONTRIBUTING.md) guide
-
-## License
-
-[Mozilla Public License 2.0](https://github.com/rolling-scopes/rsschool-app/blob/master/LICENSE)
 
 ---
 
@@ -77,17 +61,6 @@ See [CONTRIBUTING](https://github.com/rolling-scopes/rsschool-app/blob/master/CO
 <summary><strong>Old next.js cms-sanity example README.md</strong></summary>
 
 https://github.com/vercel/next.js/blob/v13.2.0/examples/cms-sanity/README.md
-
-# A statically generated blog example using Next.js and Sanity
-
-This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using [Sanity](https://www.sanity.io/) as the data source.
-
-You'll get:
-
-- Next.js deployed with the [Sanity Vercel Integration][integration].
-- Sanity Studio running on localhost and deployed in the [cloud](https://www.sanity.io/docs/deployment).
-- Sub-second as-you-type previews in Next.js
-- [On-demand revalidation of pages](https://nextjs.org/blog/next-12-1#on-demand-incremental-static-regeneration-beta) with [GROQ powered webhooks](https://www.sanity.io/docs/webhooks)
 
 ## Step 1. Set up the environment
 
@@ -423,9 +396,12 @@ Wormhole into the [manager](https://manage.sanity.io/) by running:
 - The log should start showing calls.
 - And the published changes show up on the site after you reload.
 
-</details>
+## Contributing
 
-[integration]: https://www.sanity.io/docs/vercel-integration
-[`sanity.json`]: studio/sanity.json
-[`.env.local.example`]: .env.local.example
-[unsplash]: https://unsplash.com
+See [CONTRIBUTING](https://github.com/rolling-scopes/rsschool-app/blob/master/CONTRIBUTING.md) guide
+
+## License
+
+[Mozilla Public License 2.0](https://github.com/rolling-scopes/rsschool-app/blob/master/LICENSE)
+
+</details>
