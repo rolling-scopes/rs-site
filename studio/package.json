@@ -6,11 +6,11 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
-    "cors:add": "pnpm dlx @sanity/cli cors add",
-    "prestart": "pnpm env",
-    "precors:add": "pnpm env",
-    "predeploy": "pnpm env",
-    "env": "pnpm dlx @sanity/cli install"
+    "cors:add": "npx @sanity/cli cors add",
+    "prestart": "npm run env",
+    "precors:add": "npm run env",
+    "predeploy": "npm run env",
+    "env": "npx @sanity/cli install"
   },
   "dependencies": {
     "@sanity/vision": "^3.0.0",
