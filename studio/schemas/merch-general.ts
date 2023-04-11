@@ -1,33 +1,35 @@
-export default {
+import { defineType, defineField } from 'sanity';
+
+export const merchGeneral = defineType({
   name: 'merch_general',
   title: 'Merch General',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'string',
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'titleLink',
       title: 'Title Link',
       type: 'string',
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'link',
       title: 'Url',
       type: 'url',
       validation: Rule => Rule.required()
-    },
-    {
+    }),
+    defineField({
       name: 'imagesList',
       title: 'Title images',
       type: 'array',
@@ -63,8 +65,8 @@ export default {
           ]
         }
       ]
-    },
-    {
+    }),
+    defineField({
       name: 'general_info',
       title: 'General Info',
       type: 'document',
@@ -88,6 +90,6 @@ export default {
           validation: Rule => Rule.required()
         }
       ]
-    }
+    })
   ]
-};
+});

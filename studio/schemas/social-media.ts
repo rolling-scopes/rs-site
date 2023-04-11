@@ -1,34 +1,37 @@
-export default {
+import { defineType, defineField, defineArrayMember } from 'sanity';
+
+export const socialMedia = defineType({
   name: 'social_media',
   title: 'Social media',
   type: 'document',
   fields: [
-    {
+    defineField({
       title: 'Social media list',
       name: 'social_media_title',
       type: 'string'
-    },
-    {
+    }),
+    defineField({
       title: 'Social media list',
       name: 'social_media_list',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           title: 'Social media item',
           name: 'social_media_item',
           type: 'document',
           fields: [
-            {
+            defineField({
               name: 'name',
               type: 'string',
               title: 'Name'
-            },
-            {
+            }),
+            defineField({
               name: 'icon',
               type: 'image',
-              title: 'Icon'
-            },
-            {
+              title: 'Icon',
+              options: { hotspot: true }
+            }),
+            defineField({
               name: 'item_chanel_list',
               title: 'Chanel list',
               type: 'array',
@@ -65,13 +68,12 @@ export default {
                   ]
                 }
               ]
-            }
+            })
           ],
           validation: Rule => Rule.required()
-        }
+        })
       ],
-      hotspot: true,
       validation: Rule => Rule.required()
-    }
+    })
   ]
-};
+});

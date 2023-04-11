@@ -1,14 +1,18 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
+
 import { schemaTypes } from './schemas';
 
+const projectId = import.meta.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const dataset = import.meta.env.NEXT_PUBLIC_SANITY_DATASET;
+
 export default defineConfig({
-  name: 'default',
+  basePath: '/',
   title: 'rs-cms',
 
-  projectId: 'qzohwg7s',
-  dataset: 'production',
+  projectId: projectId || '',
+  dataset,
 
   plugins: [deskTool(), visionTool()],
 

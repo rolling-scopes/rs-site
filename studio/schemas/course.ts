@@ -1,9 +1,11 @@
-export default {
+import { defineType, defineField } from 'sanity';
+
+export const course = defineType({
   name: 'courses',
   title: 'Courses',
   type: 'document',
   fields: [
-    {
+    defineField({
       validation: Rule => Rule.required(),
       name: 'type',
       title: 'Type',
@@ -17,16 +19,16 @@ export default {
           { title: 'iOS', value: 'iOS' }
         ]
       }
-    },
+    }),
 
-    {
+    defineField({
       validation: Rule => Rule.required(),
       name: 'title',
       title: 'Title',
       type: 'string'
-    },
+    }),
 
-    {
+    defineField({
       validation: Rule => Rule.required(),
       name: 'mode',
       title: 'Mode',
@@ -37,9 +39,9 @@ export default {
           { title: 'Offline', value: 'Offline' }
         ]
       }
-    },
+    }),
 
-    {
+    defineField({
       validation: Rule => Rule.required(),
       name: 'country',
       title: 'Country',
@@ -62,9 +64,9 @@ export default {
           { title: 'Uzbekistan', value: 'Uzbekistan' }
         ]
       }
-    },
+    }),
 
-    {
+    defineField({
       validation: Rule => Rule.required(),
       name: 'language',
       title: 'Language',
@@ -77,9 +79,9 @@ export default {
           { title: 'Ukrainian', value: 'Ukrainian' }
         ]
       }
-    },
+    }),
 
-    {
+    defineField({
       validation: Rule => Rule.required(),
       name: 'starting_date',
       title: 'Starting date',
@@ -87,6 +89,6 @@ export default {
       options: {
         dateFormat: 'DD-MM-YYYY'
       }
-    }
+    })
   ]
-};
+});

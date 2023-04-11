@@ -3,6 +3,7 @@ build
 coverage
 .next
 .vercel
+.sanity
 
 yarn.lock
 pnpm-lock.yaml
