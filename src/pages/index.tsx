@@ -22,13 +22,15 @@ import {
   MerchGeneralT,
   PartnersT,
   SocialMediaItemT,
-  SocialNetworkingListT,
   SpeakersT,
   AlumniCompaniesFetchT,
   GalleryBlockFetchT,
   CourseCard
 } from 'types';
 import Header from '@/components/Header/header';
+import { GetStaticProps } from 'next';
+
+type IndexProps = any;
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -43,7 +45,7 @@ export default function Index({
   courses: initialCourses,
   preview,
   faqMarkdowns
-}) {
+}: IndexProps) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
     queries.merchGeneral,
     {
@@ -79,13 +81,13 @@ export default function Index({
       enabled: preview
     }
   );
-  const { data: allSocialList } = usePreviewSubscription<
-    SocialNetworkingListT[]
-  >(queries.socialNetworksList, {
-    initialData: initialSocialMedia,
-    enabled: preview
-  });
-  const { data: allSpeakers } = usePreviewSubscription<SpeakersT>(
+  // const { data: allSocialList } = usePreviewSubscription<
+  //   SocialNetworkingListT[]
+  // >(queries.socialNetworksList, {
+  //   initialData: initialSocialMedia,
+  //   enabled: preview
+  // });
+  const { data: allSpeakers } = usePreviewSubscription<SpeakersT[]>(
     queries.speakers,
     {
       initialData: initialSpeakers,
@@ -112,7 +114,7 @@ export default function Index({
   return (
     <>
       <Header logo="circle" />
-      <SocialMedia socialList={allSocialList[0].social_media_list} />
+      <SocialMedia socialList={initialSocialMedia[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
       <Community community={allCommunity[0]} />
@@ -129,9 +131,11 @@ export default function Index({
   );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps<IndexProps> = async ({
+  preview = false
+}) => {
   const socialMedia: Array<{
-    _id;
+    _id: string;
     social_media_list: Array<SocialMediaItemT>;
   }> = overlayDrafts(await getClient(preview).fetch(queries.socialMedia));
   const donationV1 = overlayDrafts(
@@ -184,4 +188,4 @@ export async function getStaticProps({ preview = false }) {
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
   };
-}
+};

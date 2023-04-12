@@ -8,10 +8,12 @@ type MerchGeneralProps = {
   merch: MerchGeneralT;
 };
 
+type ImageList = MerchGeneralT['imagesList'];
+
 export const MerchGeneral: FC<MerchGeneralProps> = ({
   merch: { description, title, titleLink, imagesList }
 }) => {
-  const getImagesList = images =>
+  const getImagesList = (images: ImageList) =>
     images?.map(image => {
       const { caption } = image;
       return (
@@ -29,7 +31,7 @@ export const MerchGeneral: FC<MerchGeneralProps> = ({
       );
     });
 
-  const getImageBlock = images => (
+  const getImageBlock = (images: ImageList) => (
     <div className="grid flex-shrink-0 grid-cols-1 gap-y-3 lg:gap-y-4">
       {getImagesList(images)}
     </div>

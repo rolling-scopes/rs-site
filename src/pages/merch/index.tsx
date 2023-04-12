@@ -5,9 +5,18 @@ import queries from '@/lib/queries';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import { MerchGeneralT } from '@/types';
 import { GeneralInfo } from '@/components/MerchGeneral/Merch/GeneralInfo';
+import { GetStaticProps } from 'next';
 
-export default function Index({ preview, merchGeneral: initialMerchGeneral }) {
-  const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
+interface IndexProps {
+  preview: boolean;
+  merchGeneral: MerchGeneralT[];
+}
+
+export default function Index({
+  preview,
+  merchGeneral: initialMerchGeneral
+}: IndexProps) {
+  const { data: allMerchGeneral } = usePreviewSubscription(
     queries.merchGeneral,
     {
       initialData: initialMerchGeneral,
@@ -24,15 +33,15 @@ export default function Index({ preview, merchGeneral: initialMerchGeneral }) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps<IndexProps> = async ({
+  preview = false
+}) => {
   const merchGeneral = overlayDrafts(
     await getClient(preview).fetch(queries.merchGeneral)
   );
   return {
-    props: {
-      merchGeneral
-    },
+    props: { preview, merchGeneral },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
   };
-}
+};
