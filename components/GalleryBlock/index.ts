@@ -1,3 +1,1 @@
-import GalleryBlock from './gallery-block';
-
-export default GalleryBlock;
+export { default as GalleryBlock } from './gallery-block';

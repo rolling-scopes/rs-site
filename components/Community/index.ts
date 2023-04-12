@@ -1,3 +1,1 @@
-import Community from './community';
-
-export default Community;
+export { default as Community } from './community';
