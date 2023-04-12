@@ -28,10 +28,13 @@ module.exports = {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
+        brand: '#FFDB20',
         success: '#0070f3',
         cyan: '#79FFE1',
         'title-color-1': '#1A1A1A',
-        'night-900': '#191B1D'
+        night: {
+          900: '#191B1D'
+        }
       },
       spacing: {
         18: '4.5rem',

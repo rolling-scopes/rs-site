@@ -1,0 +1,21 @@
+.pin {
+  $scale-fix: 10; // fix rounding issues with custom zoom
+  position: absolute;
+  width: 12px * $scale-fix;
+  height: 12px * $scale-fix;
+  border: (1px * $scale-fix) solid theme('colors.brand');
+  transform: translate(-50%, -50%) scale(1 / $scale-fix);
+  border-radius: 50%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 2px * $scale-fix;
+    top: 2px * $scale-fix;
+    width: 6px * $scale-fix;
+    height: 6px * $scale-fix;
+
+    border-radius: 50%;
+    background: theme('colors.brand');
+  }
+}

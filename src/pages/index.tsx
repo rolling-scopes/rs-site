@@ -15,6 +15,7 @@ import { GalleryBlock } from '@/components/GalleryBlock';
 import { School } from '@/components/School';
 import { MerchGeneral } from '@/components/MerchGeneral';
 import { Header } from '@/components/Header';
+import { Statistics } from '@/components/Statistics';
 import { getFAQMarkdowns } from 'services';
 
 import {
@@ -43,6 +44,7 @@ export default function Index({
   alumniCompanies: initialAlumniCompanies,
   galleryBlock: initialGalleryBlock,
   courses: initialCourses,
+  locations,
   preview,
   faqMarkdowns
 }: IndexProps) {
@@ -114,6 +116,7 @@ export default function Index({
   return (
     <>
       <Header logo="circle" />
+      <Statistics locations={locations} />
       <SocialMedia socialList={initialSocialMedia[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
@@ -170,6 +173,19 @@ export const getStaticProps: GetStaticProps<IndexProps> = async ({
 
   const faqMarkdowns = await getFAQMarkdowns();
 
+  const locations = [
+    { label: 'Lithuania', lat: 54.687222, lng: 25.28 }, // Vilnius
+    { label: 'Latvia', lat: 56.948889, lng: 24.106389 }, // Riga
+    { label: 'Poland', lat: 52.23, lng: 21.011111 }, // Warsaw
+    { label: 'Belarus', lat: 53.9, lng: 27.566667 }, // Minsk
+    { label: 'Turkey', lat: 41.013611, lng: 28.955 }, // Istanbul
+    { label: 'Georgia', lat: 41.7225, lng: 44.7925 }, // Tbilisi
+    { label: 'Kazakhstan', lat: 51.147222, lng: 71.422222 }, // Astana
+    { label: 'Kyrgyzstan', lat: 42.874722, lng: 74.612222 }, // Bishkek
+    { label: 'Tajikistan', lat: 38.536667, lng: 68.78 }, // Dushanbe
+    { label: 'Montenegro', lat: 42.441286, lng: 19.262892 } // Podgorica
+  ];
+
   return {
     props: {
       socialMedia,
@@ -183,7 +199,8 @@ export const getStaticProps: GetStaticProps<IndexProps> = async ({
       galleryBlock,
       preview,
       faqMarkdowns,
-      courses
+      courses,
+      locations
     },
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
