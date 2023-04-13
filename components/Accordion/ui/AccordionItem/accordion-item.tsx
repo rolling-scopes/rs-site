@@ -8,7 +8,7 @@ import { styledTags } from '../styled-tags';
 const AccordionItem: FC<AccordionItemType> = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const ref = useRef<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
 
   const itemStyles = cn(styles.accordionItem, {
     [styles.withPadding]: isOpen
@@ -19,7 +19,7 @@ const AccordionItem: FC<AccordionItemType> = ({ title, content }) => {
   });
 
   const contentStyles = isOpen
-    ? { height: ref.current.scrollHeight }
+    ? { height: ref.current?.scrollHeight ?? 0 }
     : { height: 0 };
 
   function accordionItemHandler() {
