@@ -1,3 +1,1 @@
-import Speakers from './speakers';
-
-export default Speakers;
+export { default as Speakers } from './speakers';

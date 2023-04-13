@@ -1,18 +1,20 @@
+import type { GetStaticProps } from 'next';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
-import SocialMedia from '@/components/SocialMedia';
-import DonationV2 from '@/components/DonationV2';
-import DonationV1 from '@/components/DonationV1';
-import Speakers from '@/components/Speakers';
-import Community from '@/components/Community';
-import Partners from '@/components/Partners';
+import { SocialMedia } from '@/components/SocialMedia';
+import { DonationV2 } from '@/components/DonationV2';
+import { DonationV1 } from '@/components/DonationV1';
+import { Speakers } from '@/components/Speakers';
+import { Community } from '@/components/Community';
+import { Partners } from '@/components/Partners';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
-import AlumniCompanies from '@/components/AlumniCompanies';
-import GalleryBlock from '@/components/GalleryBlock';
+import { AlumniCompanies } from '@/components/AlumniCompanies';
+import { GalleryBlock } from '@/components/GalleryBlock';
 import { School } from '@/components/School';
-import { MerchGeneral } from '@/components/MerchGeneral/merch-general';
+import { MerchGeneral } from '@/components/MerchGeneral';
+import { Header } from '@/components/Header';
 import { getFAQMarkdowns } from 'services';
 
 import {
@@ -27,8 +29,6 @@ import {
   GalleryBlockFetchT,
   CourseCard
 } from 'types';
-import Header from '@/components/Header/header';
-import { GetStaticProps } from 'next';
 
 type IndexProps = any;
 

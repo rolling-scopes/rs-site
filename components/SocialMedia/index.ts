@@ -1,3 +1,1 @@
-import SocialMedia from './social-media';
-
-export default SocialMedia;
+export { default as SocialMedia } from './social-media';
