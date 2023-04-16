@@ -4,11 +4,10 @@ import { ImagesListItem } from '@/types';
 
 type Props = {
   howItWorksImages: ImagesListItem[];
-  howItWorksBlock: string
+  howItWorksBlock: string;
 };
 
 export const HowItWorks = ({ howItWorksImages, howItWorksBlock }: Props) => {
-
   const elems = howItWorksImages.map(item => (
     // eslint-disable-next-line no-underscore-dangle
     <div key={item._key} className="group relative">

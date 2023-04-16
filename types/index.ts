@@ -38,7 +38,7 @@ interface PosterListItem {
 export interface MerchGeneralT extends Base, Link {
   howItWorksImages: Array<ImagesListItem>;
   imagesList: Array<PosterListItem>;
-  howItWorksBlock:string;
+  howItWorksBlock: string;
   general_info: {
     title: string;
     description: string;

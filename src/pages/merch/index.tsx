@@ -26,7 +26,10 @@ export default function Index({
   return (
     <>
       <GeneralInfo merch={allMerchGeneral[0]?.general_info} />
-      <HowItWorks howItWorksImages={allMerchGeneral[0]?.howItWorksImages} howItWorksBlock={allMerchGeneral[0]?.howItWorksBlock} />
+      <HowItWorks
+        howItWorksImages={allMerchGeneral[0]?.howItWorksImages}
+        howItWorksBlock={allMerchGeneral[0]?.howItWorksBlock}
+      />
       <Catalog />
     </>
   );
