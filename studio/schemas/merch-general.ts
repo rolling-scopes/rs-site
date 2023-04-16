@@ -115,6 +115,11 @@ export const merchGeneral = defineType({
               title: 'URL',
               name: 'url',
               type: 'url'
+            },
+            {
+              name: 'imageAlt',
+              type: 'string',
+              title: 'Image alt'
             }
           ]
         }

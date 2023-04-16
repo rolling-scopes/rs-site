@@ -21,10 +21,12 @@ export type SpeakersT = Base & Link;
 
 export type DonationV1T = Base & Link;
 
-interface ImagesListItem {
+export interface ImagesListItem {
   caption: string;
   description: string;
   url: string;
+  altImg:string;
+  _key:string;
 }
 
 interface PosterListItem {
@@ -64,3 +66,4 @@ export type AccordionItem = {
   content: MDXRemoteSerializeResult;
   title: MDXRemoteSerializeResult;
 };
+
