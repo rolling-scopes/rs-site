@@ -9,13 +9,14 @@ import { post } from './post';
 import { speakers } from './speakers';
 import { socialMedia } from './social-media';
 import { picturesBlock } from './pictures-block';
+import {gallery} from './objects/gallery';
 
 export const schemaTypes = [
   // Document types
   alumniCompanies,
   author,
   post,
-
+  gallery,
   // Other types
   community,
   donationV1,

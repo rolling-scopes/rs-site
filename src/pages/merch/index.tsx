@@ -23,11 +23,10 @@ export default function Index({
       enabled: preview
     }
   );
-
   return (
     <>
       <GeneralInfo merch={allMerchGeneral[0]?.general_info} />
-      <HowItWorks howItWorks={allMerchGeneral[0]?.howItWorks} />
+      <HowItWorks howItWorksImages={allMerchGeneral[0]?.howItWorksImages} howItWorksBlock={allMerchGeneral[0]?.howItWorksBlock} />
       <Catalog />
     </>
   );
