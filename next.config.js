@@ -17,6 +17,7 @@ module.exports = withMDX({
   },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   webpack: config => {
+    // eslint-disable-next-line no-param-reassign
     config.resolve.fallback = { fs: false, path: false };
     config.module.rules.push({
       test: /\.svg$/i,

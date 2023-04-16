@@ -1,3 +1,1 @@
-import DonationV1 from './donation-v1';
-
-export default DonationV1;
+export { default as DonationV1 } from './donation-v1';

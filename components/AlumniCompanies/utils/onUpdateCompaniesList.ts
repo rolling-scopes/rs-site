@@ -13,7 +13,7 @@ export const onUpdateCompaniesList = (params: OnUpdateCompaniesListP) => {
     params;
 
   const indexLastItem = arrayCompanies.findIndex(
-    item => item.name === companiesList.at(-1).name
+    item => item.name === companiesList.at(-1)?.name
   );
   let newArrayItems = arrayCompanies.slice(
     indexLastItem,

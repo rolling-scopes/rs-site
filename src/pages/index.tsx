@@ -1,18 +1,20 @@
+import type { GetStaticProps } from 'next';
 import { usePreviewSubscription } from '@/lib/sanity';
 import { getClient, overlayDrafts } from '@/lib/sanity.server';
 import queries from '@/lib/queries';
-import SocialMedia from '@/components/SocialMedia';
-import DonationV2 from '@/components/DonationV2';
-import DonationV1 from '@/components/DonationV1';
-import Speakers from '@/components/Speakers';
-import Community from '@/components/Community';
-import Partners from '@/components/Partners';
+import { SocialMedia } from '@/components/SocialMedia';
+import { DonationV2 } from '@/components/DonationV2';
+import { DonationV1 } from '@/components/DonationV1';
+import { Speakers } from '@/components/Speakers';
+import { Community } from '@/components/Community';
+import { Partners } from '@/components/Partners';
 import { FAQ } from '@/components/FAQ';
 import { Accordion } from '@/components/Accordion';
-import AlumniCompanies from '@/components/AlumniCompanies';
-import GalleryBlock from '@/components/GalleryBlock';
+import { AlumniCompanies } from '@/components/AlumniCompanies';
+import { GalleryBlock } from '@/components/GalleryBlock';
 import { School } from '@/components/School';
-import { MerchGeneral } from '@/components/MerchGeneral/merch-general';
+import { MerchGeneral } from '@/components/MerchGeneral';
+import { Header } from '@/components/Header';
 import { getFAQMarkdowns } from 'services';
 
 import {
@@ -22,13 +24,13 @@ import {
   MerchGeneralT,
   PartnersT,
   SocialMediaItemT,
-  SocialNetworkingListT,
   SpeakersT,
   AlumniCompaniesFetchT,
   GalleryBlockFetchT,
   CourseCard
 } from 'types';
-import Header from '@/components/Header/header';
+
+type IndexProps = any;
 
 export default function Index({
   socialMedia: initialSocialMedia,
@@ -43,7 +45,7 @@ export default function Index({
   courses: initialCourses,
   preview,
   faqMarkdowns
-}) {
+}: IndexProps) {
   const { data: allMerchGeneral } = usePreviewSubscription<MerchGeneralT[]>(
     queries.merchGeneral,
     {
@@ -79,13 +81,13 @@ export default function Index({
       enabled: preview
     }
   );
-  const { data: allSocialList } = usePreviewSubscription<
-    SocialNetworkingListT[]
-  >(queries.socialNetworksList, {
-    initialData: initialSocialMedia,
-    enabled: preview
-  });
-  const { data: allSpeakers } = usePreviewSubscription<SpeakersT>(
+  // const { data: allSocialList } = usePreviewSubscription<
+  //   SocialNetworkingListT[]
+  // >(queries.socialNetworksList, {
+  //   initialData: initialSocialMedia,
+  //   enabled: preview
+  // });
+  const { data: allSpeakers } = usePreviewSubscription<SpeakersT[]>(
     queries.speakers,
     {
       initialData: initialSpeakers,
@@ -112,7 +114,7 @@ export default function Index({
   return (
     <>
       <Header logo="circle" />
-      <SocialMedia socialList={allSocialList[0].social_media_list} />
+      <SocialMedia socialList={initialSocialMedia[0].social_media_list} />
       <DonationV2 donation={allDonationV2[0]} />
       <DonationV1 donation={allDonationV1[0]} />
       <Community community={allCommunity[0]} />
@@ -129,9 +131,11 @@ export default function Index({
   );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps<IndexProps> = async ({
+  preview = false
+}) => {
   const socialMedia: Array<{
-    _id;
+    _id: string;
     social_media_list: Array<SocialMediaItemT>;
   }> = overlayDrafts(await getClient(preview).fetch(queries.socialMedia));
   const donationV1 = overlayDrafts(
@@ -184,4 +188,4 @@ export async function getStaticProps({ preview = false }) {
     // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
     revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
   };
-}
+};

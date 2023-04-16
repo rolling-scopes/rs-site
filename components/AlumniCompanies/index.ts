@@ -1,3 +1,1 @@
-import AlumniCompanies from './alumni-companies';
-
-export default AlumniCompanies;
+export { default as AlumniCompanies } from './alumni-companies';

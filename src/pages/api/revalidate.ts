@@ -1,3 +1,5 @@
+import type { Readable } from 'node:stream';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 import { sanityClient } from '@/lib/sanity.server';
 
@@ -14,7 +16,7 @@ const AUTHOR_UPDATED_QUERY = /* groq */ `
   }["slug"][]`;
 const POST_UPDATED_QUERY = /* groq */ `*[_type == "post" && _id == $id].slug.current`;
 
-const getQueryForType = type => {
+const getQueryForType = (type: string) => {
   switch (type) {
     case 'author':
       return AUTHOR_UPDATED_QUERY;
@@ -28,7 +30,7 @@ const getQueryForType = type => {
 const log = (msg: string, error?: boolean) =>
   console[error ? 'error' : 'log'](`[revalidate] ${msg}`);
 
-async function readBody(readable) {
+async function readBody(readable: Readable) {
   const chunks = [];
   // eslint-disable-next-line no-restricted-syntax
   for await (const chunk of readable) {
@@ -37,15 +39,16 @@ async function readBody(readable) {
   return Buffer.concat(chunks).toString('utf8');
 }
 
-export default async function revalidate(req, res) {
+export default async function revalidate(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const signature = req.headers[SIGNATURE_HEADER_NAME];
+  const secret = process.env.SANITY_REVALIDATE_SECRET?.trim() ?? '';
   const body = await readBody(req); // Read the body into a string
   if (
-    !isValidSignature(
-      body,
-      signature,
-      process.env.SANITY_REVALIDATE_SECRET?.trim()
-    )
+    typeof signature !== 'string' ||
+    !isValidSignature(body, signature, secret)
   ) {
     const invalidSignature = 'Invalid signature';
     log(invalidSignature, true);
@@ -73,7 +76,8 @@ export default async function revalidate(req, res) {
     log(updatedRoutes);
     return res.status(200).json({ message: updatedRoutes });
   } catch (err) {
-    log(err.message, true);
-    return res.status(500).json({ message: err.message });
+    const message = (err as any)?.message ?? String(err);
+    log(message, true);
+    return res.status(500).json({ message });
   }
 }

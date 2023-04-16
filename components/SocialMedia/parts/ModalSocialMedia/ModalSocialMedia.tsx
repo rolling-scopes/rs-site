@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 
 interface Props {
   modalItem: SocialMediaItemT | null;
-  setModal: Dispatch<SetStateAction<SocialMediaItemT>>;
+  setModal: Dispatch<SetStateAction<SocialMediaItemT | null>>;
 }
 
 const ImageIcon = ({ icon, name }: SocialIconT) => (
