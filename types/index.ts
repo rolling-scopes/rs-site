@@ -25,8 +25,8 @@ export interface ImagesListItem {
   caption: string;
   description: string;
   url: string;
-  altImg:string;
-  _key:string;
+  altImg: string;
+  _key: string;
 }
 
 interface PosterListItem {
@@ -66,4 +66,3 @@ export type AccordionItem = {
   content: MDXRemoteSerializeResult;
   title: MDXRemoteSerializeResult;
 };
-
