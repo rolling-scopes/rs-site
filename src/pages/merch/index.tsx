@@ -23,12 +23,13 @@ export default function Index({
       enabled: preview
     }
   );
+  const {howItWorksImages:images, howItWorksBlock:title} = allMerchGeneral[0];
   return (
     <>
       <GeneralInfo merch={allMerchGeneral[0]?.general_info} />
       <HowItWorks
-        howItWorksImages={allMerchGeneral[0]?.howItWorksImages}
-        howItWorksBlock={allMerchGeneral[0]?.howItWorksBlock}
+        howItWorksImages={images}
+        howItWorksBlock={title}
       />
       <Catalog />
     </>
