@@ -90,6 +90,17 @@ export const merchGeneral = defineType({
           validation: Rule => Rule.required()
         }
       ]
+    }),
+    defineField({
+      name: 'howItWorksBlock',
+      title: 'How it works?',
+      type: 'string',
+      validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'howItWorksImages',
+      type: 'gallery',
+      title: 'How it works images'
     })
   ]
 });

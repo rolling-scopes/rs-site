@@ -21,14 +21,24 @@ export type SpeakersT = Base & Link;
 
 export type DonationV1T = Base & Link;
 
-interface ImagesListItem {
+export interface ImagesListItem {
+  caption: string;
+  description: string;
+  url: string;
+  altImg: string;
+  _key: string;
+}
+
+interface PosterListItem {
   caption: string;
   attribution: string;
   url: string;
 }
 
 export interface MerchGeneralT extends Base, Link {
-  imagesList: Array<ImagesListItem>;
+  howItWorksImages: Array<ImagesListItem>;
+  imagesList: Array<PosterListItem>;
+  howItWorksBlock: string;
   general_info: {
     title: string;
     description: string;
