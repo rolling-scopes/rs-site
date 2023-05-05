@@ -3,7 +3,7 @@
 }
 
 .container {
-  @apply flex flex-col justify-center items-center mx-auto md:max-w-[50%];
+  @apply flex flex-col justify-center items-center mx-auto md:max-w-1/2;
 }
 
 .title {
@@ -15,5 +15,5 @@
 }
 
 .link {
-  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6 ml-8 bg-[#191b1d];
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6 ml-8 bg-night-900;
 }

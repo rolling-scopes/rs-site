@@ -1,12 +1,9 @@
 .block {
-  @apply p-20 flex flex-col gap-8 justify-start w-full;
-  background-color: #fff;
+  @apply p-20 flex flex-col gap-8 justify-start bg-white w-full;
 }
 
 .title {
-  font-size: 32px;
-  line-height: 36px;
-  @apply text-title-color-1;
+  @apply text-3xl text-night-900;
 }
 
 .socialList {
@@ -18,15 +15,9 @@
 }
 
 .socialBtn {
-  width: 87px;
-  height: 87px;
-
-  background-color: #f2f3f7;
-
-  @apply flex justify-center items-center rounded-full cursor-pointer;
+  @apply flex w-16 h-16 justify-center items-center rounded-full cursor-pointer bg-night-100;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  @apply w-6 h-6;
 }

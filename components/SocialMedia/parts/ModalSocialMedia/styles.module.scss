@@ -1,14 +1,10 @@
 .modalSection {
-  @apply flex items-center justify-center backdrop-blur-sm fixed top-0 right-0 left-0 z-50 w-full h-full md:inset-0 md:h-full;
-  background: rgba(44, 47, 60, 0.2);
+  @apply flex items-center justify-center backdrop-blur-sm bg-modal bg-opacity-30 fixed top-0 right-0 left-0 z-50 w-full h-full md:inset-0 md:h-full;
 }
 
 .modalField {
-  @apply relative p-20 flex flex-col items-center justify-start gap-8;
+  @apply relative p-20 flex flex-col items-center justify-start rounded-3xl gap-8 bg-white;
   min-height: 588px;
-
-  border-radius: 20px;
-  background: #ffffff;
 }
 
 .modalIconBlock {
@@ -16,24 +12,17 @@
 }
 
 .icon {
-  @apply flex justify-center items-center rounded-full;
+  @apply flex justify-center items-center rounded-full bg-night-100;
   width: 188px;
   height: 188px;
-  background-color: #f2f3f7;
 }
 
 .iconText {
-  @apply font-bold text-title-color-1 capitalize;
-  font-size: 32px;
-  line-height: 36px;
+  @apply font-bold text-3xl text-night-900 capitalize;
 }
 
 .modalContent {
-  display: grid;
-  justify-content: center;
-  align-items: stretch;
-
-  @apply gap-8;
+  @apply grid justify-center items-center gap-8;
 }
 
 .modalContentItem {
@@ -45,8 +34,7 @@
 }
 
 .members {
-  @apply mb-5 text-base font-semibold underline text-center;
-  color: #9fa1ae;
+  @apply mb-5 text-base font-semibold underline text-center text-night-500;
 }
 
 .description {

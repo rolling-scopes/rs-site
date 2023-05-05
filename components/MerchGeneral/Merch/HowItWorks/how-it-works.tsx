@@ -16,7 +16,7 @@ export const HowItWorks = ({
       </h2>
 
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-        {images.map(item => (
+        {images?.map(item => (
           // eslint-disable-next-line no-underscore-dangle
           <div key={item._key} className="group relative">
             <div className="mt-4 flex flex-col  justify-between">

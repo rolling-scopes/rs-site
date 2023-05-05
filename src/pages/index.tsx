@@ -114,9 +114,6 @@ export default function Index({
   return (
     <>
       <Header logo="circle" />
-      <SocialMedia socialList={initialSocialMedia[0].social_media_list} />
-      <DonationV2 donation={allDonationV2[0]} />
-      <DonationV1 donation={allDonationV1[0]} />
       <Community community={allCommunity[0]} />
       <Speakers speaker={allSpeakers[0]} />
       <MerchGeneral merch={allMerchGeneral[0]} />
@@ -127,6 +124,9 @@ export default function Index({
       <AlumniCompanies companies={alumniCompanies[0].companies} />
       <GalleryBlock data={galleryBlock[0]} />
       <School courses={courses} limit={4} />
+      <DonationV2 donation={allDonationV2[0]} />
+      <DonationV1 donation={allDonationV1[0]} />
+      <SocialMedia socialList={initialSocialMedia[0].social_media_list} />
     </>
   );
 }

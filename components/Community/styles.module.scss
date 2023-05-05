@@ -11,23 +11,19 @@
 }
 
 .title {
-  @apply text-3xl font-bold;
-  color: #1a1a1a;
+  @apply text-3xl text-night-900 font-bold;
 }
 
 .description {
-  @apply mt-3 text-sm md:text-sm;
-  color: #1a1a1a;
+  @apply mt-3 text-sm text-night-900 md:text-sm;
 }
 
 .link {
-  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 text-white mt-6;
-  background-color: #191b1d;
+  @apply inline-flex justify-center text-sm font-semibold py-2.5 px-4 bg-night-900 text-white mt-6;
 }
 
 .image {
-  @apply w-full h-72 lg:h-80 lg:mr-32 lg:w-1/2;
-  position: relative;
+  @apply relative w-full h-72 lg:h-80 lg:mr-32 lg:w-1/2;
 
   & > span > img {
     @apply object-cover;
